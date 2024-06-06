@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pokemon.HelpWindow">
+   <children>
+      <Button fx:id="closeButton" layoutX="274.0" layoutY="612.0" mnemonicParsing="false" onAction="#closeWindows" text="Cerrar" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text layoutX="60.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc blandit posuere eros sit amet blandit. Etiam aliquam convallis pretium. Donec quis purus enim. Cras pellentesque sed arcu in convallis. Mauris scelerisque tincidunt dui ut ultricies. Fusce vestibulum tempor turpis, in eleifend lacus faucibus molestie. Nam vitae malesuada nulla. Ut tortor ex, eleifend ut enim sed, luctus fermentum enim. Ut fermentum nulla enim, non fringilla lacus porttitor eget. Integer tortor mi, tempus faucibus massa pellentesque, imperdiet pretium metus.Praesent semper, sem sed suscipit dapibus, mi nisl posuere metus, id semper erat purus in erat. Nullam congue imperdiet fermentum. Curabitur semper egestas magna quis condimentum. Donec suscipit volutpat tellus ut semper. Praesent non risus id enim dapibus vehicula sit amet id libero. Pellentesque sit amet eleifend eros, a vulputate nibh. Donec pharetra tincidunt purus, ac imperdiet mi semper eget.Nam id eros ante. Praesent vel felis a dui malesuada faucibus. Mauris eget lacus sed orci cursus finibus. Vestibulum sit amet pharetra elit. Praesent suscipit vitae diam a blandit. Proin consectetur pretium lacinia. Aliquam porttitor porta aliquam. Duis at porttitor libero, quis venenatis quam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut commodo quam et suscipit rhoncus. Aliquam efficitur velit vulputate libero aliquam, et ultricies nisi dictum. Nunc pretium massa id dui fermentum varius. Donec lobortis pretium commodo. Fusce at fringilla nunc. Vivamus eget rhoncus est. Nullam finibus, ligula sit amet egestas vestibulum, nisl nisi finibus libero, id scelerisque quam diam vel diam. Sed ultrices tellus sit amet efficitur efficitur. Maecenas maximus imperdiet libero eu mattis. Pellentesque at elit in metus facilisis tincidunt. Donec sed egestas purus. Vivamus finibus rhoncus maximus. Curabitur condimentum eros at condimentum lobortis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus nisi neque, hendrerit et est dapibus, hendrerit pulvinar tellus.Pellentesque ipsum erat, congue vitae nulla a, porta mattis odio. Quisque egestas est sit amet erat ultricies iaculis. Integer a orci porttitor, tempor tellus eu, dignissim lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec suscipit ex sapien. In rhoncus ultrices quam, vel pellentesque eros ultrices nec. Suspendisse nulla nulla, dignissim non ante eget, posuere aliquet ligula. Duis in rutrum quam. Proin non turpis viverra, finibus metus eu, rhoncus neque. Nunc congue velit sit amet semper tincidunt. Vivamus et ipsum laoreet, tempor diam at, interdum arcu. Phasellus laoreet convallis feugiat. Integer semper quam consectetur metus tempus, ut maximus lectus consectetur. Quisque suscipit sodales faucibus. Cras tincidunt ante ut cursus convallis. Morbi sodales feugiat iaculis. " textAlignment="CENTER" wrappingWidth="480.13671875" />
+      <Text layoutX="249.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ayuda" textAlignment="CENTER">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>

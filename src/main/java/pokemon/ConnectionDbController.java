@@ -65,7 +65,7 @@ public class ConnectionDbController implements Initializable {
 
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
-            stage.setTitle("Ventana hija");
+            stage.setTitle("Menú Principal");
             stage.setScene(scene);
             stage.show();
 

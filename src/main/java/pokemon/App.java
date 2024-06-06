@@ -22,6 +22,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("connectionDB"), 640, 480);
+        stage.setTitle("Configuración BBDD");
         stage.setScene(scene);
         stage.show();
     }

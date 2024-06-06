@@ -15,6 +15,18 @@ public class Singleton {
     private String databasePassword;
     private String databaseName;
     private String databasePort;
+    private String difficultySelection;
+
+    public String getDifficultySelection() {
+        return difficultySelection;
+    }
+
+    public void setDifficultySelection(String difficultySelection) {
+        this.difficultySelection = difficultySelection;
+        System.out.println(this.difficultySelection);
+    }
+
+
 
     public String getDatabaseURL() {
         return databaseURL;
