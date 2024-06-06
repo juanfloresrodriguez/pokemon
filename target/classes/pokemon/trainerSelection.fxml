@@ -12,37 +12,37 @@
       <Button fx:id="returnButon" layoutX="227.0" layoutY="573.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefHeight="42.0" prefWidth="146.0" text="Volver" />
       <Group fx:id="trainer1" layoutX="8.0" layoutY="8.0">
          <children>
-            <ImageView fx:id="trainer1Trainer" fitHeight="102.0" fitWidth="72.0" layoutY="6.0" pickOnBounds="true">
+            <ImageView fitHeight="102.0" fitWidth="72.0" layoutY="6.0" pickOnBounds="true">
                <image>
                   <Image url="@../../../../imagenes/entrenadores/blaine.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="trainer1Pokemon1" fitHeight="33.0" fitWidth="37.0" layoutX="72.0" pickOnBounds="true">
+            <ImageView fitHeight="33.0" fitWidth="37.0" layoutX="72.0" pickOnBounds="true">
                <image>
-                  <Image url="@../../../../imagenes/pokemon/1.png" />
+                  <Image url="@../../../../imagenes/pokemon/001.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="trainer1Pokemon2" fitHeight="33.0" fitWidth="37.0" layoutX="72.0" layoutY="41.0" pickOnBounds="true">
+            <ImageView fitHeight="33.0" fitWidth="37.0" layoutX="72.0" layoutY="41.0" pickOnBounds="true">
                <image>
                   <Image url="@../../../../imagenes/pokemon/002.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="trainer1Pokemon3" fitHeight="33.0" fitWidth="37.0" layoutX="72.0" layoutY="74.0" pickOnBounds="true">
+            <ImageView fitHeight="33.0" fitWidth="37.0" layoutX="72.0" layoutY="74.0" pickOnBounds="true">
                <image>
                   <Image url="@../../../../imagenes/pokemon/004.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="trainer1Pokemon4" fitHeight="33.0" fitWidth="37.0" layoutX="109.0" pickOnBounds="true">
+            <ImageView fitHeight="33.0" fitWidth="37.0" layoutX="109.0" pickOnBounds="true">
                <image>
                   <Image url="@../../../../imagenes/pokemon/005.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="trainer1Pokemon5" fitHeight="33.0" fitWidth="37.0" layoutX="109.0" layoutY="41.0" pickOnBounds="true">
+            <ImageView fitHeight="33.0" fitWidth="37.0" layoutX="109.0" layoutY="41.0" pickOnBounds="true">
                <image>
                   <Image url="@../../../../imagenes/pokemon/007.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="trainer1Pokemon6" fitHeight="33.0" fitWidth="37.0" layoutX="109.0" layoutY="74.0" pickOnBounds="true">
+            <ImageView fitHeight="33.0" fitWidth="37.0" layoutX="109.0" layoutY="74.0" pickOnBounds="true">
                <image>
                   <Image url="@../../../../imagenes/pokemon/007.png" />
                </image>

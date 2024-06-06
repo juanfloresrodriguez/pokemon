@@ -86,7 +86,29 @@ public class MainMenu implements Initializable {
 
     @FXML
     void openTrainerWindows() {
-        changeTrainerImage();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("trainerSelection.fxml"));
+
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Selecciona el entrenador");
+            stage.setScene(scene);
+            stage.show();
+
+            //cerramos la ventana actual buscando su referencia a través de algún
+            //control (en este caso el botón 'abrir1'
+            Stage closeWindows = (Stage) trainerWindow.getScene().getWindow();
+
+            closeWindows.close();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+
+
+        changeTrainerImage();//Para establecer la imagen del entrenador seleccionado
     }
 
     @FXML

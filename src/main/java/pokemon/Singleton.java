@@ -23,10 +23,7 @@ public class Singleton {
 
     public void setDifficultySelection(String difficultySelection) {
         this.difficultySelection = difficultySelection;
-        System.out.println(this.difficultySelection);
     }
-
-
 
     public String getDatabaseURL() {
         return databaseURL;
