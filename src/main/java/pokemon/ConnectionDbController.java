@@ -2,17 +2,20 @@ package pokemon;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
+//Hay que implementarlo en el singleton
 public class ConnectionDbController implements Initializable {
     private static final Logger logger = LogManager.getLogger(ConnectionDbController.class);
 
@@ -48,7 +51,33 @@ public class ConnectionDbController implements Initializable {
 
     }
 
+    @FXML
     public void saveConnection() {
+        Singleton s = Singleton.getInstance();
+        s.setDatabaseURL(databaseIP.getText());
+        s.setDatabasePort(databasePort.getText());
+        s.setDatabaseName(databaseName.getText());
+        s.setDatabaseUser(databaseUser.getText());
+        s.setDatabasePassword(databasePass.getText());
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("mainMenu.fxml"));
+
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Ventana hija");
+            stage.setScene(scene);
+            stage.show();
+
+            //cerramos la ventana actual buscando su referencia a través de algún
+            //control (en este caso el botón 'abrir1'
+            Stage closeStage = (Stage) databaseAcept.getScene().getWindow();
+
+            closeStage.close();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     public void testConnection() {

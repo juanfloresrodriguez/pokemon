@@ -13,9 +13,9 @@
             <Font size="35.0" />
          </font>
       </Text>
-      <TextField fx:id="databaseIP" layoutX="57.0" layoutY="102.0" promptText="IP" />
-      <TextField fx:id="databaseName" layoutX="57.0" layoutY="160.0" promptText="BBDD" />
-      <TextField fx:id="databasePort" layoutX="57.0" layoutY="211.0" promptText="Puerto" />
+      <TextField fx:id="databaseIP" layoutX="57.0" layoutY="102.0" promptText="IP" text="localhost" />
+      <TextField fx:id="databaseName" layoutX="57.0" layoutY="160.0" promptText="BBDD" text="pokemon" />
+      <TextField fx:id="databasePort" layoutX="57.0" layoutY="211.0" promptText="Puerto" text="3306" />
       <TextField fx:id="databaseUser" layoutX="373.0" layoutY="127.0" promptText="Usuario" text="root" />
       <TextField fx:id="databasePass" layoutX="373.0" layoutY="173.0" promptText="Contraseña" />
       <Text layoutX="426.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario" />
