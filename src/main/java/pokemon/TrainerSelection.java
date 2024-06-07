@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 public class TrainerSelection implements Initializable {
 
     @FXML
-    private Button returnButon;
+    private Button returnButton;
 
     @FXML
     private Group trainer1;
@@ -102,7 +102,7 @@ public class TrainerSelection implements Initializable {
         }
 
         //cerramos la ventana actual a través de algún control de la misma
-        Stage stage = (Stage) returnButon.getScene().getWindow();
+        Stage stage = (Stage) returnButton.getScene().getWindow();
 
         stage.close();
     }
