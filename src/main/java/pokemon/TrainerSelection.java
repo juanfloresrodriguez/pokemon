@@ -7,9 +7,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
 
+import java.io.File;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -112,15 +114,26 @@ public class TrainerSelection implements Initializable {
         Singleton s = Singleton.getInstance();
         try{
             Connection connection = DriverManager.getConnection(s.getDatabaseURL(), s.getDatabaseUser(), s.getDatabasePassword());
+            int num = 2;
+//            for(int i =0; i<12; i++) {
+                String query = "SELECT Trainer FROM Trainers WHERE ID_Trainer =" + num;
+                PreparedStatement statement = connection.prepareStatement(query);
 
 
-            String query = "SELECT ID_Trainer FROM Trainers";
-            PreparedStatement statement = connection.prepareStatement(query);
 
-            ResultSet trainersId = statement.executeQuery();
+                ResultSet trainerName = statement.executeQuery();
+//            System.out.println(trainerName.getString(1));
+//            File file = new File("imagenes/"+ trainerName.getString(1) +".png");
+//            trainer1Trainer.setImage(new Image(file.toURI().toString()));
 
-            while(trainersId.next()) {
-                trainersId.getInt(1);
+//                num++;
+//            }
+
+            while(trainerName.next()) {
+                trainerName.getString(1);
+                System.out.println(trainerName);
+                File file = new File("imagenes/" + trainerName + ".png");
+                trainer1Trainer.setImage(new Image(file.toURI().toString()));
             }
 
         } catch (Exception ex) {
@@ -133,6 +146,6 @@ public class TrainerSelection implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        setTrainerImages();
     }
 }

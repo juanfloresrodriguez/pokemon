@@ -88,7 +88,7 @@ public class MainMenu implements Initializable {
     void openTrainerWindows() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("trainerSelection.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("trainerSelection1.fxml"));
 
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
@@ -152,6 +152,8 @@ public class MainMenu implements Initializable {
 
         @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Singleton s = Singleton.getInstance();
+
         List<String> difficulty = new ArrayList<>();
         difficulty.add("Recluta");
         difficulty.add("Marine");
@@ -160,6 +162,10 @@ public class MainMenu implements Initializable {
 //        difficultySelection = new ComboBox<>(FXCollections.observableArrayList(difficulty));
 
         difficultySelection.setItems(FXCollections.observableArrayList(difficulty));
+
+        if(s.getDifficultySelection()==null){
+            difficultySelection.getSelectionModel().selectFirst();
+        }
     }
 
 

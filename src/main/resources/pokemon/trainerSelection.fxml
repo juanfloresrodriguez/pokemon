@@ -11,39 +11,39 @@
       <Button fx:id="returnButton" layoutX="227.0" layoutY="573.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefHeight="42.0" prefWidth="146.0" text="Volver" />
       <Group fx:id="trainer1" layoutX="8.0" layoutY="8.0">
          <children>
-            <ImageView fitHeight="102.0" fitWidth="72.0" layoutY="6.0" pickOnBounds="true">
+            <ImageView fx:id="trainer1Trainer" fitHeight="102.0" fitWidth="72.0" layoutY="6.0" pickOnBounds="true">
                <image>
-                  <Image url="@../../../../imagenes/entrenadores/blaine.png" />
+                  <Image url="@../../../.."/>
                </image>
             </ImageView>
             <ImageView fitHeight="33.0" fitWidth="37.0" layoutX="72.0" pickOnBounds="true">
                <image>
-                  <Image url="@../../../../imagenes/pokemon/001.png" />
+                  <Image url="@../../../.." />
                </image>
             </ImageView>
             <ImageView fitHeight="33.0" fitWidth="37.0" layoutX="72.0" layoutY="41.0" pickOnBounds="true">
                <image>
-                  <Image url="@../../../../imagenes/pokemon/002.png" />
+                  <Image url="@../../../../imagenes/pokemon/2.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="33.0" fitWidth="37.0" layoutX="72.0" layoutY="74.0" pickOnBounds="true">
                <image>
-                  <Image url="@../../../../imagenes/pokemon/004.png" />
+                  <Image url="@../../../../imagenes/pokemon/4.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="33.0" fitWidth="37.0" layoutX="109.0" pickOnBounds="true">
                <image>
-                  <Image url="@../../../../imagenes/pokemon/005.png" />
+                  <Image url="@../../../../imagenes/pokemon/5.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="33.0" fitWidth="37.0" layoutX="109.0" layoutY="41.0" pickOnBounds="true">
                <image>
-                  <Image url="@../../../../imagenes/pokemon/007.png" />
+                  <Image url="@../../../../imagenes/pokemon/7.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="33.0" fitWidth="37.0" layoutX="109.0" layoutY="74.0" pickOnBounds="true">
                <image>
-                  <Image url="@../../../../imagenes/pokemon/007.png" />
+                  <Image url="@../../../../imagenes/pokemon/7.png" />
                </image>
             </ImageView>
          </children>
