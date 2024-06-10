@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DatabaseManager {
+    static String databaseUrl;
     public DatabaseManager() {}
 
     public static boolean testConnection(String databaseIp, String databasePort, String databaseName, String databaseUser, String databasePassword) {
@@ -17,5 +18,13 @@ public class DatabaseManager {
         } catch (Exception ex) {
             return false;
         }
+    }
+
+    public static String getDatabaseUrl() {
+        return databaseUrl;
+    }
+
+    public static void setDatabaseUrl(String databaseUrl) {
+        DatabaseManager.databaseUrl = databaseUrl;
     }
 }

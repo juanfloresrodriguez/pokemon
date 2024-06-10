@@ -10,12 +10,21 @@ public class Singleton {
         return INSTANCE;
     }
 
-    private String databaseURL;
+    private String databaseIp;
     private String databaseUser;
     private String databasePassword;
     private String databaseName;
     private String databasePort;
     private String difficultySelection;
+    private String trainerSelection;
+
+    public String getTrainerSelection() {
+        return trainerSelection;
+    }
+
+    public void setTrainerSelection(String trainerSelection) {
+        this.trainerSelection = trainerSelection;
+    }
 
     public String getDifficultySelection() {
         return difficultySelection;
@@ -25,12 +34,12 @@ public class Singleton {
         this.difficultySelection = difficultySelection;
     }
 
-    public String getDatabaseURL() {
-        return databaseURL;
+    public String getDatabaseIp() {
+        return databaseIp;
     }
 
-    public void setDatabaseURL(String databaseURL) {
-        this.databaseURL = databaseURL;
+    public void setDatabaseIp(String databaseURL) {
+        this.databaseIp = databaseURL;
     }
 
     public String getDatabaseUser() {

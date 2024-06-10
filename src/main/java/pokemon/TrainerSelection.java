@@ -113,7 +113,7 @@ public class TrainerSelection implements Initializable {
 
         Singleton s = Singleton.getInstance();
         try{
-            Connection connection = DriverManager.getConnection(s.getDatabaseURL(), s.getDatabaseUser(), s.getDatabasePassword());
+            Connection connection = DriverManager.getConnection(s.getDatabaseIp(), s.getDatabaseUser(), s.getDatabasePassword());
             int num = 2;
 //            for(int i =0; i<12; i++) {
                 String query = "SELECT Trainer FROM Trainers WHERE ID_Trainer =" + num;

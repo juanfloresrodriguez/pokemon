@@ -9,9 +9,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,6 +22,7 @@ import java.sql.ResultSet;
 import java.util.*;
 
 public class TrainerSelection1 implements Initializable {
+    Singleton s = Singleton.getInstance();
 
     @FXML
     private Button returnButton;
@@ -30,8 +33,20 @@ public class TrainerSelection1 implements Initializable {
     @FXML
     private ComboBox<String> trainerName;
 
+
+
     @FXML
-    void listOfTrainers(ActionEvent event) {
+    void setTrainerImage(){
+//Convierte el nombre seleccionado del comboBox lo convierte a un string y llama a la foto que se llama así
+        String name = trainerName.getValue();
+        File file = new File("imagenes/entrenadores/" + name + ".png");
+        trainer.setImage(new Image(file.toURI().toString()));
+
+        s.setTrainerSelection(name);
+    }
+
+    @FXML
+    void setPokemonTrainer(){
 
     }
 
@@ -62,25 +77,34 @@ public class TrainerSelection1 implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Singleton s = Singleton.getInstance();
-        List<String> names = new ArrayList<>();
-        int num=1;
+
         try{
-            Connection connection = DriverManager.getConnection(s.getDatabaseURL(), s.getDatabaseUser(), s.getDatabasePassword());
+            Singleton s = Singleton.getInstance();
+            List<String> names = new ArrayList<>();
+            int num=1;
+            String databaseUrl = "jdbc:mysql://" + s.getDatabaseIp() + ":" + s.getDatabasePort()+ "/" + s.getDatabaseName();
+            Connection connection = DriverManager.getConnection(databaseUrl, s.getDatabaseUser(), s.getDatabasePassword());
             for(int i =0; i<12; i++) {
+
                 String query = "SELECT Trainer FROM Trainers WHERE ID_Trainer = " + num;
                 PreparedStatement statement = connection.prepareStatement(query);
 
                 ResultSet name = statement.executeQuery();
-                names.add(String.valueOf(name));
+                name.next();
+                names.add(name.getString("Trainer"));
                 num++;
             }
+            System.out.println(names);
+            trainerName.setItems(FXCollections.observableArrayList(names));
+            if(s.getTrainerSelection()==null){
+                trainerName.getSelectionModel().selectFirst();
+            }
 
+            setTrainerImage();
         }catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
 
-        System.out.println(names);
-        trainerName.setItems(FXCollections.observableArrayList(names));
+
     }
 }

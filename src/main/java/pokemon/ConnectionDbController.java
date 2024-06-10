@@ -54,11 +54,12 @@ public class ConnectionDbController implements Initializable {
     @FXML
     public void saveConnection() {
         Singleton s = Singleton.getInstance();
-        s.setDatabaseURL(databaseIP.getText());
+        s.setDatabaseIp(databaseIP.getText());
         s.setDatabasePort(databasePort.getText());
         s.setDatabaseName(databaseName.getText());
         s.setDatabaseUser(databaseUser.getText());
         s.setDatabasePassword(databasePass.getText());
+
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("mainMenu.fxml"));
