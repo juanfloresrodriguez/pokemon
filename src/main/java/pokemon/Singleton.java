@@ -1,5 +1,7 @@
 package pokemon;
 
+import java.util.List;
+
 public class Singleton {
     private final static Singleton INSTANCE = new Singleton();
 
@@ -17,6 +19,7 @@ public class Singleton {
     private String databasePort;
     private String difficultySelection;
     private String trainerSelection;
+    private List<Integer> trainerPokemon;
 
     public String getTrainerSelection() {
         return trainerSelection;
@@ -74,9 +77,11 @@ public class Singleton {
         this.databasePort = databaseType;
     }
 
+    public List<Integer> getTrainerPokemon() {
+        return trainerPokemon;
+    }
 
-
-
-
-
+    public void setTrainerPokemon(List<Integer> trainerPokemon) {
+        this.trainerPokemon = trainerPokemon;
+    }
 }

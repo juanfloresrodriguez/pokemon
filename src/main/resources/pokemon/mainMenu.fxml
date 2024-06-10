@@ -15,7 +15,7 @@
       <Button fx:id="helpWindow" layoutX="285.0" layoutY="345.0" mnemonicParsing="false" onAction="#openHelpWindow" text="Ayuda" />
       <Button fx:id="databaseReturn" layoutX="367.0" layoutY="345.0" mnemonicParsing="false" onAction="#returnToDatabase" text="Volver BBDD" />
       <Button fx:id="playButton" layoutX="519.0" layoutY="345.0" mnemonicParsing="false" onAction="#openGame" text="Jugar" />
-      <ImageView fx:id="trainerImage" fitHeight="260.0" fitWidth="313.0" layoutX="72.0" layoutY="39.0" pickOnBounds="true">
+      <ImageView fx:id="trainerImage" fitHeight="261.0" fitWidth="346.0" layoutX="61.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../imagenes/dibujo_entrenadores.png" />
          </image>

@@ -33,6 +33,23 @@ public class TrainerSelection1 implements Initializable {
     @FXML
     private ComboBox<String> trainerName;
 
+    @FXML
+    private ImageView pokemon1;
+
+    @FXML
+    private ImageView pokemon2;
+
+    @FXML
+    private ImageView pokemon3;
+
+    @FXML
+    private ImageView pokemon4;
+
+    @FXML
+    private ImageView pokemon5;
+
+    @FXML
+    private ImageView pokemon6;
 
 
     @FXML
@@ -43,11 +60,143 @@ public class TrainerSelection1 implements Initializable {
         trainer.setImage(new Image(file.toURI().toString()));
 
         s.setTrainerSelection(name);
+        setPokemonTrainer();
     }
 
     @FXML
     void setPokemonTrainer(){
-        
+        List<Integer> pokemonId = new ArrayList<>();
+        pokemonId.addAll(Query.trainerPokemon());
+        System.out.println(pokemonId.size());
+
+        File file, file1, file2, file3, file4, file5;
+
+        switch(pokemonId.size()) {
+            case 1: //Un solo pokemon
+                file = new File("imagenes/pokemon/" + pokemonId.get(0) + ".png");
+                pokemon1.setImage(new Image(file.toURI().toString()));
+                //POKEBALLS
+                file1 = new File("imagenes/pokemon/pokeball.png");
+                pokemon2.setImage(new Image(file1.toURI().toString()));
+
+                file2 = new File("imagenes/pokemon/pokeball.png");
+                pokemon3.setImage(new Image(file2.toURI().toString()));
+
+                file3 = new File("imagenes/pokemon/pokeball.png");
+                pokemon4.setImage(new Image(file3.toURI().toString()));
+
+                file4 = new File("imagenes/pokemon/pokeball.png");
+                pokemon5.setImage(new Image(file4.toURI().toString()));
+
+                file5 = new File("imagenes/pokemon/pokeball.png");
+                pokemon6.setImage(new Image(file5.toURI().toString()));
+                break;
+            case 2:
+                file = new File("imagenes/pokemon/" + pokemonId.get(0) + ".png");
+                pokemon1.setImage(new Image(file.toURI().toString()));
+
+                file1 = new File("imagenes/pokemon/" + pokemonId.get(1) + ".png");
+                pokemon2.setImage(new Image(file1.toURI().toString()));
+
+                //POKEBALLS
+                file2 = new File("imagenes/pokemon/pokeball.png");
+                pokemon3.setImage(new Image(file2.toURI().toString()));
+
+                file3 = new File("imagenes/pokemon/pokeball.png");
+                pokemon4.setImage(new Image(file3.toURI().toString()));
+
+                file4 = new File("imagenes/pokemon/pokeball.png");
+                pokemon5.setImage(new Image(file4.toURI().toString()));
+
+                file5 = new File("imagenes/pokemon/pokeball.png");
+                pokemon6.setImage(new Image(file5.toURI().toString()));
+
+                break;
+            case 3:
+                file = new File("imagenes/pokemon/" + pokemonId.get(0) + ".png");
+                pokemon1.setImage(new Image(file.toURI().toString()));
+
+                file1 = new File("imagenes/pokemon/" + pokemonId.get(1) + ".png");
+                pokemon2.setImage(new Image(file1.toURI().toString()));
+
+                file2 = new File("imagenes/pokemon/" + pokemonId.get(2) + ".png");
+                pokemon3.setImage(new Image(file2.toURI().toString()));
+
+                //POKEBALLS
+                file3 = new File("imagenes/pokemon/pokeball.png");
+                pokemon4.setImage(new Image(file3.toURI().toString()));
+
+                file4 = new File("imagenes/pokemon/pokeball.png");
+                pokemon5.setImage(new Image(file4.toURI().toString()));
+
+                file5 = new File("imagenes/pokemon/pokeball.png");
+                pokemon6.setImage(new Image(file5.toURI().toString()));
+
+                break;
+            case 4:
+                file = new File("imagenes/pokemon/" + pokemonId.get(0) + ".png");
+                pokemon1.setImage(new Image(file.toURI().toString()));
+
+                file1 = new File("imagenes/pokemon/" + pokemonId.get(1) + ".png");
+                pokemon2.setImage(new Image(file1.toURI().toString()));
+
+                file2 = new File("imagenes/pokemon/" + pokemonId.get(2) + ".png");
+                pokemon3.setImage(new Image(file2.toURI().toString()));
+
+                file3 = new File("imagenes/pokemon/" + pokemonId.get(3) + ".png");
+                pokemon4.setImage(new Image(file3.toURI().toString()));
+
+                //POKEBALLS
+                file4 = new File("imagenes/pokemon/pokeball.png");
+                pokemon5.setImage(new Image(file4.toURI().toString()));
+
+                file5 = new File("imagenes/pokemon/pokeball.png");
+                pokemon6.setImage(new Image(file5.toURI().toString()));
+
+                break;
+            case 5:
+                file = new File("imagenes/pokemon/" + pokemonId.get(0) + ".png");
+                pokemon1.setImage(new Image(file.toURI().toString()));
+
+                file1 = new File("imagenes/pokemon/" + pokemonId.get(1) + ".png");
+                pokemon2.setImage(new Image(file1.toURI().toString()));
+
+                file2 = new File("imagenes/pokemon/" + pokemonId.get(2) + ".png");
+                pokemon3.setImage(new Image(file2.toURI().toString()));
+
+                file3 = new File("imagenes/pokemon/" + pokemonId.get(3) + ".png");
+                pokemon4.setImage(new Image(file3.toURI().toString()));
+
+                file4 = new File("imagenes/pokemon/" + pokemonId.get(4) + ".png");
+                pokemon5.setImage(new Image(file4.toURI().toString()));
+
+                //POKEBALLS
+                file5 = new File("imagenes/pokemon/pokeball.png");
+                pokemon6.setImage(new Image(file5.toURI().toString()));
+
+                break;
+            case 6:
+                file = new File("imagenes/pokemon/" + pokemonId.get(0) + ".png");
+                pokemon1.setImage(new Image(file.toURI().toString()));
+
+                file1 = new File("imagenes/pokemon/" + pokemonId.get(1) + ".png");
+                pokemon2.setImage(new Image(file1.toURI().toString()));
+
+                file2 = new File("imagenes/pokemon/" + pokemonId.get(2) + ".png");
+                pokemon3.setImage(new Image(file2.toURI().toString()));
+
+                file3 = new File("imagenes/pokemon/" + pokemonId.get(3) + ".png");
+                pokemon4.setImage(new Image(file3.toURI().toString()));
+
+                file4 = new File("imagenes/pokemon/" + pokemonId.get(4) + ".png");
+                pokemon5.setImage(new Image(file4.toURI().toString()));
+
+                file5 = new File("imagenes/pokemon/" + pokemonId.get(5) + ".png");
+                pokemon6.setImage(new Image(file5.toURI().toString()));
+                break;
+        }
+        //Establecemos los pokemon del entrenador en el Singleton
+        s.setTrainerPokemon(pokemonId);
     }
 
     @FXML
@@ -77,33 +226,14 @@ public class TrainerSelection1 implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        trainerName.setItems(FXCollections.observableArrayList(Query.trainersNames()));
 
-        try{
-            Singleton s = Singleton.getInstance();
-            List<String> names = new ArrayList<>();
-            int num=1;
-            String databaseUrl = "jdbc:mysql://" + s.getDatabaseIp() + ":" + s.getDatabasePort()+ "/" + s.getDatabaseName();
-            Connection connection = DriverManager.getConnection(databaseUrl, s.getDatabaseUser(), s.getDatabasePassword());
-            for(int i =0; i<12; i++) {
 
-                String query = "SELECT Trainer FROM Trainers WHERE ID_Trainer = " + num;
-                PreparedStatement statement = connection.prepareStatement(query);
-
-                ResultSet name = statement.executeQuery();
-                name.next();
-                names.add(name.getString("Trainer"));
-                num++;
-            }
-            System.out.println(names);
-            trainerName.setItems(FXCollections.observableArrayList(names));
-            if(s.getTrainerSelection()==null){
-                trainerName.getSelectionModel().selectFirst();
-            }
-
-            setTrainerImage();
-        }catch (Exception ex) {
-            System.out.println(ex.getMessage());
+        if(s.getTrainerSelection()==null){
+            trainerName.getSelectionModel().selectFirst();
         }
+
+        setTrainerImage();
 
 
     }

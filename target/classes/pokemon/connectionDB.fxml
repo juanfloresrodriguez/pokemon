@@ -23,6 +23,6 @@
       <Button fx:id="databaseTest" layoutX="484.0" layoutY="331.0" mnemonicParsing="false" onAction="#testConnection" text="Test" />
       <Button fx:id="databaseAcept" layoutX="373.0" layoutY="331.0" mnemonicParsing="false" onAction="#saveConnection" text="Aceptar" />
       <Button fx:id="databaseExit" layoutX="112.0" layoutY="331.0" mnemonicParsing="false" onAction="#exitProgram" text="Salir" />
-      <Text fx:id="connectionStatus" layoutX="390.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text fx:id="connectionStatus" layoutX="259.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="82.0" />
    </children>
 </Pane>
