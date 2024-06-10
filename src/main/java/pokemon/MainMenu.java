@@ -48,6 +48,7 @@ public class MainMenu implements Initializable {
     @FXML
     private Button trainerWindow;
 
+
     @FXML
     void exitProgram() {
         System.exit(0);
@@ -146,7 +147,9 @@ public class MainMenu implements Initializable {
 
 
     public void changeTrainerImage(){
-        File file = new File("imagenes/dibujo_entrenadores.png");
+        Singleton s = Singleton.getInstance();
+//        String trainerName = s.getTrainerSelection();
+        File file = new File("imagenes/entrenadores/"+ s.getTrainerSelection() + ".png");
         trainerImage.setImage(new Image(file.toURI().toString()));
     }
 
@@ -166,6 +169,8 @@ public class MainMenu implements Initializable {
         if(s.getDifficultySelection()==null){
             difficultySelection.getSelectionModel().selectFirst();
         }
+        //Una vez que tengamos seleccionado un entrenador se cambia al entrenador seleccionado
+        changeTrainerImage();
     }
 
 

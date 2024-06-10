@@ -47,7 +47,7 @@ public class TrainerSelection1 implements Initializable {
 
     @FXML
     void setPokemonTrainer(){
-
+        
     }
 
     @FXML

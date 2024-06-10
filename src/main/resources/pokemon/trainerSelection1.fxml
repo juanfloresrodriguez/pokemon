@@ -15,7 +15,7 @@
          </font>
       </Text>
       <ComboBox fx:id="trainerName" layoutX="225.0" layoutY="69.0" onAction="#setTrainerImage" prefWidth="150.0" />
-      <ImageView fx:id="trainer" fitHeight="249.0" fitWidth="145.0" layoutX="228.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="trainer" fitHeight="249.0" fitWidth="145.0" layoutX="104.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="returnButton" layoutX="221.0" layoutY="472.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefHeight="64.0" prefWidth="158.0" text="Volver" />
    </children>
 </Pane>
