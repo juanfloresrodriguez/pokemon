@@ -51,20 +51,22 @@ public class PokedexController implements Initializable {
         int idPokemon = Query.pokemonId(pokemonNames.getValue());
         File file = new File("imagenes/pokemon/" + idPokemon  + ".png");
         pokemon.setImage(new Image(file.toURI().toString()));
+        getAtributes();
     }
 
     void getAtributes(){
         List<String> atributes = new ArrayList<>();
         atributes.addAll(Query.pokemonAtributes(Query.pokemonId(pokemonNames.getValue())));
 
-        String HP = atributes.get(1);
-        String ATT = atributes.get(2);
-        String SATT = atributes.get(3);
-        String SPE = atributes.get(4);
-        String DEF = atributes.get(5);
+        String HP = atributes.get(0);
+        String ATT = atributes.get(1);
+        String SATT = atributes.get(2);
+        String SPE = atributes.get(3);
+        String DEF = atributes.get(4);
 
-        pokemonAtributes.setText("Hola");
-//        pokemonAtributes.setText("Vida: " + HP + "Ataques: " + ATT + "Ataque Especial : " + SATT + "Velocidad: " + SPE + "Defensa: " + DEF);
+//        pokemonAtributes.setText("Hola");
+        String cadena = "Vida: " + HP + "\r\n" + "Ataques: " + ATT + "\r\n" + "Ataque Especial : " + SATT + "\r\n" + "Velocidad: " + SPE + "\r\n" + "Defensa: " + DEF;
+        pokemonAtributes.setText(cadena);
     }
 
     @FXML

@@ -14,7 +14,7 @@ public class Query {
         try {
             int num=1;
 
-            String databaseUrl = "jdbc:mysql://" + s.getDatabaseIp() + ":" + s.getDatabasePort()+ "/" + s.getDatabaseName();
+            String databaseUrl = s.getDatabaseUrl();
             Connection connection = DriverManager.getConnection(databaseUrl, s.getDatabaseUser(), s.getDatabasePassword());
             for(int i =0; i<12; i++) {
 
@@ -26,6 +26,7 @@ public class Query {
                 names.add(name.getString("Trainer"));
                 num++;
             }
+            connection.close();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -39,7 +40,7 @@ public class Query {
         int trainerId;
 
         try {
-            String databaseUrl = "jdbc:mysql://" + s.getDatabaseIp() + ":" + s.getDatabasePort()+ "/" + s.getDatabaseName();
+            String databaseUrl = s.getDatabaseUrl();
             Connection connection = DriverManager.getConnection(databaseUrl, s.getDatabaseUser(), s.getDatabasePassword());
 
             String query = "SELECT ID_Trainer FROM Trainers WHERE Trainer = '" + trainerName +"'";
@@ -48,6 +49,7 @@ public class Query {
             ResultSet trainer = statement.executeQuery();
             trainer.next();
             trainerId = trainer.getInt("ID_Trainer");
+            connection.close();
             return trainerId;
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -63,7 +65,7 @@ public class Query {
         List<Integer> pokemon = new ArrayList<>();
         int trainerId = trainerId(s.getTrainerSelection());
         try {
-            String databaseUrl = "jdbc:mysql://" + s.getDatabaseIp() + ":" + s.getDatabasePort()+ "/" + s.getDatabaseName();
+            String databaseUrl = s.getDatabaseUrl();
             Connection connection = DriverManager.getConnection(databaseUrl, s.getDatabaseUser(), s.getDatabasePassword());
 
                 String query = "SELECT ID_Pokemon FROM Rel_Trainer_Pokemon WHERE ID_Trainer = " + trainerId;
@@ -73,6 +75,7 @@ public class Query {
                 while(pokemonName.next()) {
                     pokemon.add(pokemonName.getInt("ID_Pokemon"));
                 }
+                connection.close();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -85,7 +88,7 @@ public class Query {
         List<String> pokemon = new ArrayList<>();
 
         try {
-            String databaseUrl = "jdbc:mysql://" + s.getDatabaseIp() + ":" + s.getDatabasePort()+ "/" + s.getDatabaseName();
+            String databaseUrl = s.getDatabaseUrl();
             Connection connection = DriverManager.getConnection(databaseUrl, s.getDatabaseUser(), s.getDatabasePassword());
 
             int num=1;
@@ -103,6 +106,7 @@ public class Query {
                 num++;
             }
             System.out.println(pokemon);
+            connection.close();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -115,7 +119,7 @@ public class Query {
         int pokemonId;
 
         try {
-            String databaseUrl = "jdbc:mysql://" + s.getDatabaseIp() + ":" + s.getDatabasePort()+ "/" + s.getDatabaseName();
+            String databaseUrl = s.getDatabaseUrl();
             Connection connection = DriverManager.getConnection(databaseUrl, s.getDatabaseUser(), s.getDatabasePassword());
 
             String query = "SELECT ID_Pokemon FROM Pokemon WHERE Pokemon = '" + pokemonName +"'";
@@ -124,6 +128,7 @@ public class Query {
             ResultSet pokemon = statement.executeQuery();
             pokemon.next();
             pokemonId = pokemon.getInt("ID_Pokemon");
+            connection.close();
             return pokemonId;
 
         } catch (Exception ex) {
@@ -139,7 +144,7 @@ public class Query {
         List<String> atributes = new ArrayList<>();
 
         try {
-            String databaseUrl = "jdbc:mysql://" + s.getDatabaseIp() + ":" + s.getDatabasePort()+ "/" + s.getDatabaseName();
+            String databaseUrl =s.getDatabaseUrl();
             Connection connection = DriverManager.getConnection(databaseUrl, s.getDatabaseUser(), s.getDatabasePassword());
 
             String query = "SELECT HP, Attack, Special_Attack, Speed, Defense FROM Pokemon WHERE ID_Pokemon =" + pokemonId;
@@ -153,6 +158,7 @@ public class Query {
             atributes.add(pokemon.getString("Speed"));
             atributes.add(pokemon.getString("Defense"));
 
+            connection.close();
             return atributes;
 
         } catch (Exception ex) {

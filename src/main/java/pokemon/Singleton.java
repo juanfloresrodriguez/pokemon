@@ -17,6 +17,7 @@ public class Singleton {
     private String databasePassword;
     private String databaseName;
     private String databasePort;
+    private String databaseUrl;
     private String difficultySelection;
     private String trainerSelection;
     private List<Integer> trainerPokemon;
@@ -75,6 +76,14 @@ public class Singleton {
 
     public void setDatabasePort(String databaseType) {
         this.databasePort = databaseType;
+    }
+
+    public String getDatabaseUrl() {
+        return databaseUrl;
+    }
+
+    public void setDatabaseUrl(String databaseUrl) {
+        this.databaseUrl = databaseUrl;
     }
 
     public List<Integer> getTrainerPokemon() {
