@@ -64,8 +64,9 @@ public class PokedexController implements Initializable {
         String SPE = atributes.get(3);
         String DEF = atributes.get(4);
 
+        String Type = Query.pokemonType(Query.pokemonId(pokemonNames.getValue()));
 //        pokemonAtributes.setText("Hola");
-        String cadena = "Vida: " + HP + "\r\n" + "Ataques: " + ATT + "\r\n" + "Ataque Especial : " + SATT + "\r\n" + "Velocidad: " + SPE + "\r\n" + "Defensa: " + DEF;
+        String cadena = "Vida: " + HP + "\r\n" + "Ataques: " + ATT + "\r\n" + "Ataque Especial : " + SATT + "\r\n" + "Velocidad: " + SPE + "\r\n" + "Defensa: " + DEF + "\r\n" + "Tipo: " + Type;
         pokemonAtributes.setText(cadena);
     }
 
