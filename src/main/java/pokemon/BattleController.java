@@ -2,6 +2,7 @@ package pokemon;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -68,7 +69,14 @@ public class BattleController implements Initializable {
     @FXML
     private ImageView pokemon6;
 
+    @FXML
     private ImageView pokemonSelected;
+
+    @FXML
+    private Button attackButton;
+
+    @FXML
+    private Button SpecialAttackButton;
 
     Pokemon pk1, pk2, pk3, pk4, pk5, pk6, tux;
 
@@ -279,6 +287,13 @@ public class BattleController implements Initializable {
 //        double progress = (double) tux.hp / tux.maxHp;
 //        hpTux.setProgress(progress);
 //    }
+    @FXML
+    void attack() {
+    }
+
+    @FXML
+    void specialAttack() {
+    }
 
     @FXML
     void onDragDetected(MouseEvent event) {

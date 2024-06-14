@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -62,5 +63,7 @@
       <Text fx:id="atributtesPokemon5" layoutX="559.0" layoutY="446.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="104.0" />
       <Text fx:id="atributtesPokemon6" layoutX="697.0" layoutY="446.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="104.0" />
       <ProgressBar fx:id="hpTux" layoutX="503.0" layoutY="20.0" prefHeight="18.0" prefWidth="104.0" progress="0.0" />
+      <Button fx:id="attackButton" layoutX="82.0" layoutY="26.0" mnemonicParsing="false" onAction="#attack" text="Ataque" />
+      <Button fx:id="SpecialAttackButton" layoutX="162.0" layoutY="26.0" mnemonicParsing="false" onAction="#specialAttack" text=" Ataque Especial" />
    </children>
 </Pane>
