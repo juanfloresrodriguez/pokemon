@@ -1,6 +1,9 @@
 package pokemon;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Singleton {
     private final static Singleton INSTANCE = new Singleton();
@@ -20,7 +23,8 @@ public class Singleton {
     private String databaseUrl;
     private String difficultySelection;
     private String trainerSelection;
-    private List<Integer> trainerPokemon;
+    private Map<Integer , List<Integer>> trainerPokemon = new HashMap<>();
+    private List<Integer> pokemonId = new ArrayList<>();
 
 //    private Double[][] effectivenessChart = {
 //            // Normal
@@ -127,11 +131,32 @@ public class Singleton {
         this.databaseUrl = databaseUrl;
     }
 
-    public List<Integer> getTrainerPokemon() {
+    public Map<Integer, List<Integer>> getTrainerPokemon() {
         return trainerPokemon;
     }
 
-    public void setTrainerPokemon(List<Integer> trainerPokemon) {
+    public void setTrainerPokemon(Map<Integer, List<Integer>> trainerPokemon) {
         this.trainerPokemon = trainerPokemon;
+    }
+
+    public List<Integer> getPokemonId() {
+        return pokemonId;
+    }
+
+    public void setPokemonId(List<Integer> pokemonId) {
+        this.pokemonId = pokemonId;
+    }
+//    Map<Integer, List<String>>
+    public void getTrainerPokemonMap() {
+        for(int i=0; i < pokemonId.size(); i++){
+//            List<String> atributes = new ArrayList<>();
+//            atributes.add(Query.pokemonAtributes(pokemonId.get(i)));
+//            this.trainerPokemon.put(pokemonId.get(i), atributes);
+            this.trainerPokemon.put(pokemonId.get(i), Query.pokemonAtributes(pokemonId.get(i)));
+        }
+
+        System.out.println(trainerPokemon);
+
+//        return trainerPokemon;
     }
 }

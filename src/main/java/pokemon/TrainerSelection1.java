@@ -196,7 +196,7 @@ public class TrainerSelection1 implements Initializable {
                 break;
         }
         //Establecemos los pokemon del entrenador en el Singleton
-        s.setTrainerPokemon(pokemonId);
+        s.setPokemonId(pokemonId);
     }
 
     @FXML

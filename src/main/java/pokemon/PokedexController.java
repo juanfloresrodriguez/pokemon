@@ -55,17 +55,19 @@ public class PokedexController implements Initializable {
     }
 
     void getAtributes(){
-        List<String> atributes = new ArrayList<>();
+        List<Integer> atributes = new ArrayList<>();
         atributes.addAll(Query.pokemonAtributes(Query.pokemonId(pokemonNames.getValue())));
 
-        String HP = atributes.get(0);
-        String ATT = atributes.get(1);
-        String SATT = atributes.get(2);
-        String SPE = atributes.get(3);
-        String DEF = atributes.get(4);
+        int HP = atributes.get(0);
+        int ATT = atributes.get(1);
+        int SATT = atributes.get(2);
+        int SPE = atributes.get(3);
+        int DEF = atributes.get(4);
 
         String Type = Query.pokemonType(Query.pokemonId(pokemonNames.getValue()));
-//        pokemonAtributes.setText("Hola");
+        if(Type == null){
+            Type="Typeless";
+        }
         String cadena = "Vida: " + HP + "\r\n" + "Ataques: " + ATT + "\r\n" + "Ataque Especial : " + SATT + "\r\n" + "Velocidad: " + SPE + "\r\n" + "Defensa: " + DEF + "\r\n" + "Tipo: " + Type;
         pokemonAtributes.setText(cadena);
     }
@@ -91,7 +93,6 @@ public class PokedexController implements Initializable {
 
         //cerramos la ventana actual a través de algún control de la misma
         Stage stage = (Stage) returnButton.getScene().getWindow();
-
         stage.close();
     }
 

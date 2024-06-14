@@ -30,8 +30,6 @@ public class Query {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-
-
         return names;
     }
 
@@ -55,8 +53,6 @@ public class Query {
             System.out.println(ex.getMessage());
             return -1;//Devuelve -1 si hay un error
         }
-
-
     }
 
     public static List<Integer> trainerPokemon(){
@@ -75,11 +71,12 @@ public class Query {
                 while(pokemonName.next()) {
                     pokemon.add(pokemonName.getInt("ID_Pokemon"));
                 }
+
+                s.setPokemonId(pokemon);
                 connection.close();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-
         return pokemon;
     }
 
@@ -98,11 +95,8 @@ public class Query {
                 PreparedStatement statement = connection.prepareStatement(query);
 
                 ResultSet pokemonName = statement.executeQuery();
-//                while(pokemonName.next()) {
                     pokemonName.next();
                     pokemon.add(pokemonName.getString(1));
-//                }
-
                 num++;
             }
             System.out.println(pokemon);
@@ -110,8 +104,30 @@ public class Query {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-
         return pokemon;
+    }
+
+    public static String pokemonName(int id) {
+        Singleton s = Singleton.getInstance();
+        String pokemonName;
+
+        try {
+            String databaseUrl = s.getDatabaseUrl();
+            Connection connection = DriverManager.getConnection(databaseUrl, s.getDatabaseUser(), s.getDatabasePassword());
+
+            String query = "SELECT Pokemon FROM Pokemon WHERE ID_Pokemon =" + id;
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            ResultSet pokemon = statement.executeQuery();
+            pokemon.next();
+            pokemonName = pokemon.getString("Pokemon");
+            connection.close();
+            return pokemonName;
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null;//Devuelve null si hay un error
+        }
     }
 
     public static int pokemonId(String pokemonName){
@@ -136,12 +152,11 @@ public class Query {
             return -1;//Devuelve -1 si hay un error
         }
 
-
     }
 
-    public static List<String> pokemonAtributes(int pokemonId){
+    public static List<Integer> pokemonAtributes(int pokemonId){
         Singleton s = Singleton.getInstance();
-        List<String> atributes = new ArrayList<>();
+        List<Integer> atributes = new ArrayList<>();
 
         try {
             String databaseUrl =s.getDatabaseUrl();
@@ -152,13 +167,14 @@ public class Query {
 
             ResultSet pokemon = statement.executeQuery();
             pokemon.next();
-            atributes.add(pokemon.getString("HP"));
-            atributes.add(pokemon.getString("Attack"));
-            atributes.add(pokemon.getString("Special_Attack"));
-            atributes.add(pokemon.getString("Speed"));
-            atributes.add(pokemon.getString("Defense"));
+            atributes.add(pokemon.getInt("HP"));
+            atributes.add(pokemon.getInt("Attack"));
+            atributes.add(pokemon.getInt("Special_Attack"));
+            atributes.add(pokemon.getInt("Speed"));
+            atributes.add(pokemon.getInt("Defense"));
 
             connection.close();
+            System.out.println(atributes);
             return atributes;
 
         } catch (Exception ex) {
@@ -204,7 +220,7 @@ public class Query {
             Connection connection = DriverManager.getConnection(databaseUrl, s.getDatabaseUser(), s.getDatabasePassword());
 
             //Genera un numero aleotorio el cual corresponde a un tipo de pokemon
-            int num = (int) (Math.random()*17+1);
+            int num = (int) (Math.random()*17);
 
             String query = "SELECT Type from Types WHERE ID_Type =" + num;
             PreparedStatement statement = connection.prepareStatement(query);
