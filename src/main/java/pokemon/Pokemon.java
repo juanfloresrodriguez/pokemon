@@ -22,7 +22,6 @@ public class Pokemon {
    */
     public Pokemon(int id) {
        Singleton s = Singleton.getInstance();
-        if (id > 0) {
             this.id = id;
             this.name = Query.pokemonName(id);
             this.type = Query.pokemonType(id);
@@ -32,10 +31,7 @@ public class Pokemon {
             hp = atributes.get(0);
 
             changeAtributes();
-        } else {
-            this.id = id;
-            this.name = "Tux";
-        }
+
     }
 
     Pokemon() {
@@ -138,6 +134,11 @@ public class Pokemon {
             Type="Typeless";
         }
         String cadena = "Vida: " + HP + "\r\n" + "Ataques: " + ATT + "\r\n" + "Ataque Especial : " + SATT + "\r\n" + "Velocidad: " + SPE + "\r\n" + "Defensa: " + DEF + "\r\n" + "Tipo: " + Type;
+        return cadena;
+    }
+    public String setTuxStats() {
+        String cadena = "Vida: " +  hp + "\r\n" + "Tipo: " + type;
+
         return cadena;
     }
 }

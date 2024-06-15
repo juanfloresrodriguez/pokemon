@@ -3,9 +3,11 @@ package pokemon;
 public class Tux extends Pokemon {
     public Tux(int id){
         super(id);
+        System.out.println("Created");
         changeAtributes();
         super.hp=super.atributes.get(0);
         super.maxHp = super.atributes.get(0);
+        super.type=Query.tuxType();
     }
 
     /*
@@ -52,5 +54,7 @@ public class Tux extends Pokemon {
                 super.atributes.set(4, 372);
                 break;
         }
+
+
     }
 }
