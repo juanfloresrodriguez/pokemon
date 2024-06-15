@@ -7,7 +7,8 @@ public class Tux extends Pokemon {
         changeAtributes();
         super.hp=super.atributes.get(0);
         super.maxHp = super.atributes.get(0);
-        super.type=Query.tuxType();
+        super.type=tipos[Query.tuxTypeId()-1];
+        System.out.println(this.type);
     }
 
     /*

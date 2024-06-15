@@ -142,554 +142,8 @@ public class BattleController implements Initializable {
 
     private double typeMultiplier() {
         Singleton s = Singleton.getInstance();
-        double resul = 0.0;
-        if(pkSelected.getType() == "Normal" && tux.getType() == "Normal"){
-            resul = s.effectivenessChart[0][0];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Fire"){
-            resul = s.effectivenessChart[0][1];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Water"){
-            resul = s.effectivenessChart[0][2];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Grass"){
-            resul = s.effectivenessChart[0][3];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Electric"){
-            resul = s.effectivenessChart[0][4];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Ice"){
-            resul = s.effectivenessChart[0][5];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Fighting"){
-            resul = s.effectivenessChart[0][6];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Poison"){
-            resul = s.effectivenessChart[0][8];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Ground"){
-            resul = s.effectivenessChart[0][9];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Flying"){
-            resul = s.effectivenessChart[0][10];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Psychic"){
-            resul = s.effectivenessChart[0][11];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Bug"){
-            resul = s.effectivenessChart[0][12];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Rock"){
-            resul = s.effectivenessChart[0][13];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Ghost"){
-            resul = s.effectivenessChart[0][14];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Dark"){
-            resul = s.effectivenessChart[0][15];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Steel"){
-            resul = s.effectivenessChart[0][16];
-        }else if(pkSelected.getType() == "Fire" && tux.getType() == "Normal"){
-            resul = s.effectivenessChart[1][0];
-        }else if (pkSelected.getType() == "Fire" && tux.getType() == "Fire"){
-            resul = s.effectivenessChart[1][1];
-        }else if (pkSelected.getType() == "Fire" && tux.getType() == "Water"){
-            resul = s.effectivenessChart[1][2];
-        }else if (pkSelected.getType() == "Fire" && tux.getType() == "Grass"){
-            resul = s.effectivenessChart[1][3];
-        }else if (pkSelected.getType() == "Fire" && tux.getType() == "Electric"){
-            resul = s.effectivenessChart[1][4];
-        }else if (pkSelected.getType() == "Fire" && tux.getType() == "Ice"){
-            resul = s.effectivenessChart[1][5];
-        }else if (pkSelected.getType() == "Fire" && tux.getType() == "Fighting"){
-            resul = s.effectivenessChart[1][6];
-        }else if (pkSelected.getType() == "Fire" && tux.getType() == "Poison"){
-            resul = s.effectivenessChart[1][8];
-        }else if (pkSelected.getType() == "Fire" && tux.getType() == "Ground"){
-            resul = s.effectivenessChart[1][9];
-        }else if (pkSelected.getType() == "Fire" && tux.getType() == "Flying"){
-            resul = s.effectivenessChart[1][10];
-        }else if (pkSelected.getType() == "Fire" && tux.getType() == "Psychic"){
-            resul = s.effectivenessChart[1][11];
-        }else if (pkSelected.getType() == "Fire" && tux.getType() == "Bug"){
-            resul = s.effectivenessChart[1][12];
-        }else if (pkSelected.getType() == "Fire" && tux.getType() == "Rock"){
-            resul = s.effectivenessChart[1][13];
-        }else if (pkSelected.getType() == "Fire" && tux.getType() == "Ghost"){
-            resul = s.effectivenessChart[1][14];
-        }else if (pkSelected.getType() == "Fire" && tux.getType() == "Dark"){
-            resul = s.effectivenessChart[1][15];
-        }else if (pkSelected.getType() == "Fire" && tux.getType() == "Steel"){
-            resul = s.effectivenessChart[1][16];
-        }else if(pkSelected.getType() == "Water" && tux.getType() == "Normal"){
-            resul = s.effectivenessChart[2][0];
-        }else if (pkSelected.getType() == "Water" && tux.getType() == "Fire"){
-            resul = s.effectivenessChart[2][1];
-        }else if (pkSelected.getType() == "Water" && tux.getType() == "Water"){
-            resul = s.effectivenessChart[2][2];
-        }else if (pkSelected.getType() == "Water" && tux.getType() == "Grass"){
-            resul = s.effectivenessChart[2][3];
-        }else if (pkSelected.getType() == "Water" && tux.getType() == "Electric"){
-            resul = s.effectivenessChart[2][4];
-        }else if (pkSelected.getType() == "Water" && tux.getType() == "Ice"){
-            resul = s.effectivenessChart[2][5];
-        }else if (pkSelected.getType() == "Water" && tux.getType() == "Fighting"){
-            resul = s.effectivenessChart[2][6];
-        }else if (pkSelected.getType() == "Water" && tux.getType() == "Poison"){
-            resul = s.effectivenessChart[2][8];
-        }else if (pkSelected.getType() == "Water" && tux.getType() == "Ground"){
-            resul = s.effectivenessChart[2][9];
-        }else if (pkSelected.getType() == "Water" && tux.getType() == "Flying"){
-            resul = s.effectivenessChart[2][10];
-        }else if (pkSelected.getType() == "Water" && tux.getType() == "Psychic"){
-            resul = s.effectivenessChart[2][11];
-        }else if (pkSelected.getType() == "Water" && tux.getType() == "Bug"){
-            resul = s.effectivenessChart[2][12];
-        }else if (pkSelected.getType() == "Water" && tux.getType() == "Rock"){
-            resul = s.effectivenessChart[2][13];
-        }else if (pkSelected.getType() == "Water" && tux.getType() == "Ghost"){
-            resul = s.effectivenessChart[2][14];
-        }else if (pkSelected.getType() == "Water" && tux.getType() == "Dark"){
-            resul = s.effectivenessChart[2][15];
-        }else if (pkSelected.getType() == "Water" && tux.getType() == "Steel"){
-            resul = s.effectivenessChart[2][16];
-        }else if(pkSelected.getType() == "Grass" && tux.getType() == "Normal"){
-            resul = s.effectivenessChart[3][0];
-        }else if (pkSelected.getType() == "Grass" && tux.getType() == "Fire"){
-            resul = s.effectivenessChart[3][1];
-        }else if (pkSelected.getType() == "Grass" && tux.getType() == "Water"){
-            resul = s.effectivenessChart[3][2];
-        }else if (pkSelected.getType() == "Grass" && tux.getType() == "Grass"){
-            resul = s.effectivenessChart[3][3];
-        }else if (pkSelected.getType() == "Grass" && tux.getType() == "Electric"){
-            resul = s.effectivenessChart[3][4];
-        }else if (pkSelected.getType() == "Grass" && tux.getType() == "Ice"){
-            resul = s.effectivenessChart[3][5];
-        }else if (pkSelected.getType() == "Grass" && tux.getType() == "Fighting"){
-            resul = s.effectivenessChart[3][6];
-        }else if (pkSelected.getType() == "Grass" && tux.getType() == "Poison"){
-            resul = s.effectivenessChart[3][8];
-        }else if (pkSelected.getType() == "Grass" && tux.getType() == "Ground"){
-            resul = s.effectivenessChart[3][9];
-        }else if (pkSelected.getType() == "Grass" && tux.getType() == "Flying"){
-            resul = s.effectivenessChart[3][10];
-        }else if (pkSelected.getType() == "Grass" && tux.getType() == "Psychic"){
-            resul = s.effectivenessChart[3][11];
-        }else if (pkSelected.getType() == "Grass" && tux.getType() == "Bug"){
-            resul = s.effectivenessChart[3][12];
-        }else if (pkSelected.getType() == "Grass" && tux.getType() == "Rock"){
-            resul = s.effectivenessChart[3][13];
-        }else if (pkSelected.getType() == "Grass" && tux.getType() == "Ghost"){
-            resul = s.effectivenessChart[3][14];
-        }else if (pkSelected.getType() == "Grass" && tux.getType() == "Dark"){
-            resul = s.effectivenessChart[3][15];
-        }else if (pkSelected.getType() == "Grass" && tux.getType() == "Steel"){
-            resul = s.effectivenessChart[3][16];
-        }else if(pkSelected.getType() == "Electric" && tux.getType() == "Normal"){
-            resul = s.effectivenessChart[4][0];
-        }else if (pkSelected.getType() == "Electric" && tux.getType() == "Fire"){
-            resul = s.effectivenessChart[4][1];
-        }else if (pkSelected.getType() == "Electric" && tux.getType() == "Water"){
-            resul = s.effectivenessChart[4][2];
-        }else if (pkSelected.getType() == "Electric" && tux.getType() == "Grass"){
-            resul = s.effectivenessChart[4][3];
-        }else if (pkSelected.getType() == "Electric" && tux.getType() == "Electric"){
-            resul = s.effectivenessChart[4][4];
-        }else if (pkSelected.getType() == "Electric" && tux.getType() == "Ice"){
-            resul = s.effectivenessChart[4][5];
-        }else if (pkSelected.getType() == "Electric" && tux.getType() == "Fighting"){
-            resul = s.effectivenessChart[4][6];
-        }else if (pkSelected.getType() == "Electric" && tux.getType() == "Poison"){
-            resul = s.effectivenessChart[4][8];
-        }else if (pkSelected.getType() == "Electric" && tux.getType() == "Ground"){
-            resul = s.effectivenessChart[4][9];
-        }else if (pkSelected.getType() == "Electric" && tux.getType() == "Flying"){
-            resul = s.effectivenessChart[4][10];
-        }else if (pkSelected.getType() == "Electric" && tux.getType() == "Psychic"){
-            resul = s.effectivenessChart[4][11];
-        }else if (pkSelected.getType() == "Electric" && tux.getType() == "Bug"){
-            resul = s.effectivenessChart[4][12];
-        }else if (pkSelected.getType() == "Electric" && tux.getType() == "Rock"){
-            resul = s.effectivenessChart[4][13];
-        }else if (pkSelected.getType() == "Electric" && tux.getType() == "Ghost"){
-            resul = s.effectivenessChart[4][14];
-        }else if (pkSelected.getType() == "Electric" && tux.getType() == "Dark"){
-            resul = s.effectivenessChart[4][15];
-        }else if (pkSelected.getType() == "Electric" && tux.getType() == "Steel"){
-            resul = s.effectivenessChart[4][16];
-        }else if(pkSelected.getType() == "Ice" && tux.getType() == "Normal"){
-            resul = s.effectivenessChart[5][0];
-        }else if (pkSelected.getType() == "Ice" && tux.getType() == "Fire"){
-            resul = s.effectivenessChart[5][1];
-        }else if (pkSelected.getType() == "Ice" && tux.getType() == "Water"){
-            resul = s.effectivenessChart[5][2];
-        }else if (pkSelected.getType() == "Ice" && tux.getType() == "Grass"){
-            resul = s.effectivenessChart[5][3];
-        }else if (pkSelected.getType() == "Ice" && tux.getType() == "Electric"){
-            resul = s.effectivenessChart[5][4];
-        }else if (pkSelected.getType() == "Ice" && tux.getType() == "Ice"){
-            resul = s.effectivenessChart[5][5];
-        }else if (pkSelected.getType() == "Ice" && tux.getType() == "Fighting"){
-            resul = s.effectivenessChart[5][6];
-        }else if (pkSelected.getType() == "Ice" && tux.getType() == "Poison"){
-            resul = s.effectivenessChart[5][8];
-        }else if (pkSelected.getType() == "Ice" && tux.getType() == "Ground"){
-            resul = s.effectivenessChart[5][9];
-        }else if (pkSelected.getType() == "Ice" && tux.getType() == "Flying"){
-            resul = s.effectivenessChart[5][10];
-        }else if (pkSelected.getType() == "Ice" && tux.getType() == "Psychic"){
-            resul = s.effectivenessChart[5][11];
-        }else if (pkSelected.getType() == "Ice" && tux.getType() == "Bug"){
-            resul = s.effectivenessChart[5][12];
-        }else if (pkSelected.getType() == "Ice" && tux.getType() == "Rock"){
-            resul = s.effectivenessChart[5][13];
-        }else if (pkSelected.getType() == "Ice" && tux.getType() == "Ghost"){
-            resul = s.effectivenessChart[5][14];
-        }else if (pkSelected.getType() == "Ice" && tux.getType() == "Dark"){
-            resul = s.effectivenessChart[5][15];
-        }else if (pkSelected.getType() == "Ice" && tux.getType() == "Steel"){
-            resul = s.effectivenessChart[5][16];
-        }else if(pkSelected.getType() == "Fighting" && tux.getType() == "Normal"){
-            resul = s.effectivenessChart[6][0];
-        }else if (pkSelected.getType() == "Fighting" && tux.getType() == "Fire"){
-            resul = s.effectivenessChart[6][1];
-        }else if (pkSelected.getType() == "Fighting" && tux.getType() == "Water"){
-            resul = s.effectivenessChart[6][2];
-        }else if (pkSelected.getType() == "Fighting" && tux.getType() == "Grass"){
-            resul = s.effectivenessChart[6][3];
-        }else if (pkSelected.getType() == "Fighting" && tux.getType() == "Electric"){
-            resul = s.effectivenessChart[6][4];
-        }else if (pkSelected.getType() == "Fighting" && tux.getType() == "Ice"){
-            resul = s.effectivenessChart[6][5];
-        }else if (pkSelected.getType() == "Fighting" && tux.getType() == "Fighting"){
-            resul = s.effectivenessChart[6][6];
-        }else if (pkSelected.getType() == "Fighting" && tux.getType() == "Poison"){
-            resul = s.effectivenessChart[6][8];
-        }else if (pkSelected.getType() == "Fighting" && tux.getType() == "Ground"){
-            resul = s.effectivenessChart[6][9];
-        }else if (pkSelected.getType() == "Fighting" && tux.getType() == "Flying"){
-            resul = s.effectivenessChart[6][10];
-        }else if (pkSelected.getType() == "Fighting" && tux.getType() == "Psychic"){
-            resul = s.effectivenessChart[6][11];
-        }else if (pkSelected.getType() == "Fighting" && tux.getType() == "Bug"){
-            resul = s.effectivenessChart[6][12];
-        }else if (pkSelected.getType() == "Fighting" && tux.getType() == "Rock"){
-            resul = s.effectivenessChart[6][13];
-        }else if (pkSelected.getType() == "Fighting" && tux.getType() == "Ghost"){
-            resul = s.effectivenessChart[6][14];
-        }else if (pkSelected.getType() == "Fighting" && tux.getType() == "Dark"){
-            resul = s.effectivenessChart[6][15];
-        }else if (pkSelected.getType() == "Fighting" && tux.getType() == "Steel"){
-            resul = s.effectivenessChart[6][16];
-        }else if(pkSelected.getType() == "Poison" && tux.getType() == "Normal"){
-            resul = s.effectivenessChart[7][0];
-        }else if (pkSelected.getType() == "Poison" && tux.getType() == "Fire"){
-            resul = s.effectivenessChart[7][1];
-        }else if (pkSelected.getType() == "Poison" && tux.getType() == "Water"){
-            resul = s.effectivenessChart[7][2];
-        }else if (pkSelected.getType() == "Poison" && tux.getType() == "Grass"){
-            resul = s.effectivenessChart[7][3];
-        }else if (pkSelected.getType() == "Poison" && tux.getType() == "Electric"){
-            resul = s.effectivenessChart[7][4];
-        }else if (pkSelected.getType() == "Poison" && tux.getType() == "Ice"){
-            resul = s.effectivenessChart[7][5];
-        }else if (pkSelected.getType() == "Poison" && tux.getType() == "Fighting"){
-            resul = s.effectivenessChart[7][6];
-        }else if (pkSelected.getType() == "Poison" && tux.getType() == "Poison"){
-            resul = s.effectivenessChart[7][8];
-        }else if (pkSelected.getType() == "Poison" && tux.getType() == "Ground"){
-            resul = s.effectivenessChart[7][9];
-        }else if (pkSelected.getType() == "Poison" && tux.getType() == "Flying"){
-            resul = s.effectivenessChart[7][10];
-        }else if (pkSelected.getType() == "Poison" && tux.getType() == "Psychic"){
-            resul = s.effectivenessChart[7][11];
-        }else if (pkSelected.getType() == "Poison" && tux.getType() == "Bug"){
-            resul = s.effectivenessChart[7][12];
-        }else if (pkSelected.getType() == "Poison" && tux.getType() == "Rock"){
-            resul = s.effectivenessChart[7][13];
-        }else if (pkSelected.getType() == "Poison" && tux.getType() == "Ghost"){
-            resul = s.effectivenessChart[7][14];
-        }else if (pkSelected.getType() == "Poison" && tux.getType() == "Dark"){
-            resul = s.effectivenessChart[7][15];
-        }else if (pkSelected.getType() == "Poison" && tux.getType() == "Steel"){
-            resul = s.effectivenessChart[7][16];
-        }else if(pkSelected.getType() == "Ground" && tux.getType() == "Normal"){
-            resul = s.effectivenessChart[8][0];
-        }else if (pkSelected.getType() == "Ground" && tux.getType() == "Fire"){
-            resul = s.effectivenessChart[8][1];
-        }else if (pkSelected.getType() == "Ground" && tux.getType() == "Water"){
-            resul = s.effectivenessChart[8][2];
-        }else if (pkSelected.getType() == "Ground" && tux.getType() == "Grass"){
-            resul = s.effectivenessChart[8][3];
-        }else if (pkSelected.getType() == "Ground" && tux.getType() == "Electric"){
-            resul = s.effectivenessChart[8][4];
-        }else if (pkSelected.getType() == "Ground" && tux.getType() == "Ice"){
-            resul = s.effectivenessChart[8][5];
-        }else if (pkSelected.getType() == "Ground" && tux.getType() == "Fighting"){
-            resul = s.effectivenessChart[8][6];
-        }else if (pkSelected.getType() == "Ground" && tux.getType() == "Poison"){
-            resul = s.effectivenessChart[8][8];
-        }else if (pkSelected.getType() == "Ground" && tux.getType() == "Ground"){
-            resul = s.effectivenessChart[8][9];
-        }else if (pkSelected.getType() == "Ground" && tux.getType() == "Flying"){
-            resul = s.effectivenessChart[8][10];
-        }else if (pkSelected.getType() == "Ground" && tux.getType() == "Psychic"){
-            resul = s.effectivenessChart[8][11];
-        }else if (pkSelected.getType() == "Ground" && tux.getType() == "Bug"){
-            resul = s.effectivenessChart[8][12];
-        }else if (pkSelected.getType() == "Ground" && tux.getType() == "Rock"){
-            resul = s.effectivenessChart[8][13];
-        }else if (pkSelected.getType() == "Ground" && tux.getType() == "Ghost"){
-            resul = s.effectivenessChart[8][14];
-        }else if (pkSelected.getType() == "Ground" && tux.getType() == "Dark"){
-            resul = s.effectivenessChart[8][15];
-        }else if (pkSelected.getType() == "Ground" && tux.getType() == "Steel"){
-            resul = s.effectivenessChart[8][16];
-        }else if(pkSelected.getType() == "Flying" && tux.getType() == "Normal"){
-            resul = s.effectivenessChart[9][0];
-        }else if (pkSelected.getType() == "Flying" && tux.getType() == "Fire"){
-            resul = s.effectivenessChart[9][1];
-        }else if (pkSelected.getType() == "Flying" && tux.getType() == "Water"){
-            resul = s.effectivenessChart[9][2];
-        }else if (pkSelected.getType() == "Flying" && tux.getType() == "Grass"){
-            resul = s.effectivenessChart[9][3];
-        }else if (pkSelected.getType() == "Flying" && tux.getType() == "Electric"){
-            resul = s.effectivenessChart[9][4];
-        }else if (pkSelected.getType() == "Flying" && tux.getType() == "Ice"){
-            resul = s.effectivenessChart[9][5];
-        }else if (pkSelected.getType() == "Flying" && tux.getType() == "Fighting"){
-            resul = s.effectivenessChart[9][6];
-        }else if (pkSelected.getType() == "Flying" && tux.getType() == "Poison"){
-            resul = s.effectivenessChart[9][8];
-        }else if (pkSelected.getType() == "Flying" && tux.getType() == "Ground"){
-            resul = s.effectivenessChart[9][9];
-        }else if (pkSelected.getType() == "Flying" && tux.getType() == "Flying"){
-            resul = s.effectivenessChart[9][10];
-        }else if (pkSelected.getType() == "Flying" && tux.getType() == "Psychic"){
-            resul = s.effectivenessChart[9][11];
-        }else if (pkSelected.getType() == "Flying" && tux.getType() == "Bug"){
-            resul = s.effectivenessChart[9][12];
-        }else if (pkSelected.getType() == "Flying" && tux.getType() == "Rock"){
-            resul = s.effectivenessChart[9][13];
-        }else if (pkSelected.getType() == "Flying" && tux.getType() == "Ghost"){
-            resul = s.effectivenessChart[9][14];
-        }else if (pkSelected.getType() == "Flying" && tux.getType() == "Dark"){
-            resul = s.effectivenessChart[9][15];
-        }else if (pkSelected.getType() == "Flying" && tux.getType() == "Steel"){
-            resul = s.effectivenessChart[9][16];
-        }else if(pkSelected.getType() == "Psychic" && tux.getType() == "Normal"){
-            resul = s.effectivenessChart[10][0];
-        }else if (pkSelected.getType() == "Psychic" && tux.getType() == "Fire"){
-            resul = s.effectivenessChart[10][1];
-        }else if (pkSelected.getType() == "Psychic" && tux.getType() == "Water"){
-            resul = s.effectivenessChart[10][2];
-        }else if (pkSelected.getType() == "Psychic" && tux.getType() == "Grass"){
-            resul = s.effectivenessChart[10][3];
-        }else if (pkSelected.getType() == "Psychic" && tux.getType() == "Electric"){
-            resul = s.effectivenessChart[10][4];
-        }else if (pkSelected.getType() == "Psychic" && tux.getType() == "Ice"){
-            resul = s.effectivenessChart[10][5];
-        }else if (pkSelected.getType() == "Psychic" && tux.getType() == "Fighting"){
-            resul = s.effectivenessChart[10][6];
-        }else if (pkSelected.getType() == "Psychic" && tux.getType() == "Poison"){
-            resul = s.effectivenessChart[10][8];
-        }else if (pkSelected.getType() == "Psychic" && tux.getType() == "Ground"){
-            resul = s.effectivenessChart[10][9];
-        }else if (pkSelected.getType() == "Psychic" && tux.getType() == "Flying"){
-            resul = s.effectivenessChart[10][10];
-        }else if (pkSelected.getType() == "Psychic" && tux.getType() == "Psychic"){
-            resul = s.effectivenessChart[10][11];
-        }else if (pkSelected.getType() == "Psychic" && tux.getType() == "Bug"){
-            resul = s.effectivenessChart[10][12];
-        }else if (pkSelected.getType() == "Psychic" && tux.getType() == "Rock"){
-            resul = s.effectivenessChart[10][13];
-        }else if (pkSelected.getType() == "Psychic" && tux.getType() == "Ghost"){
-            resul = s.effectivenessChart[10][14];
-        }else if (pkSelected.getType() == "Psychic" && tux.getType() == "Dark"){
-            resul = s.effectivenessChart[10][15];
-        }else if (pkSelected.getType() == "Psychic" && tux.getType() == "Steel"){
-            resul = s.effectivenessChart[10][16];
-        }else if(pkSelected.getType() == "Bug" && tux.getType() == "Normal"){
-            resul = s.effectivenessChart[11][0];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Fire"){
-            resul = s.effectivenessChart[11][1];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Water"){
-            resul = s.effectivenessChart[11][2];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Grass"){
-            resul = s.effectivenessChart[11][3];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Electric"){
-            resul = s.effectivenessChart[11][4];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Ice"){
-            resul = s.effectivenessChart[11][5];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Fighting"){
-            resul = s.effectivenessChart[11][6];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Poison"){
-            resul = s.effectivenessChart[11][8];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Ground"){
-            resul = s.effectivenessChart[11][9];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Flying"){
-            resul = s.effectivenessChart[11][10];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Psychic"){
-            resul = s.effectivenessChart[11][11];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Bug"){
-            resul = s.effectivenessChart[11][12];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Rock"){
-            resul = s.effectivenessChart[11][13];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Ghost"){
-            resul = s.effectivenessChart[11][14];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Dark"){
-            resul = s.effectivenessChart[11][15];
-        }else if (pkSelected.getType() == "Normal" && tux.getType() == "Steel"){
-            resul = s.effectivenessChart[11][16];
-        }else if(pkSelected.getType() == "Rock" && tux.getType() == "Normal"){
-            resul = s.effectivenessChart[12][0];
-        }else if (pkSelected.getType() == "Rock" && tux.getType() == "Fire"){
-            resul = s.effectivenessChart[12][1];
-        }else if (pkSelected.getType() == "Rock" && tux.getType() == "Water"){
-            resul = s.effectivenessChart[12][2];
-        }else if (pkSelected.getType() == "Rock" && tux.getType() == "Grass"){
-            resul = s.effectivenessChart[12][3];
-        }else if (pkSelected.getType() == "Rock" && tux.getType() == "Electric"){
-            resul = s.effectivenessChart[12][4];
-        }else if (pkSelected.getType() == "Rock" && tux.getType() == "Ice"){
-            resul = s.effectivenessChart[12][5];
-        }else if (pkSelected.getType() == "Rock" && tux.getType() == "Fighting"){
-            resul = s.effectivenessChart[12][6];
-        }else if (pkSelected.getType() == "Rock" && tux.getType() == "Poison"){
-            resul = s.effectivenessChart[12][8];
-        }else if (pkSelected.getType() == "Rock" && tux.getType() == "Ground"){
-            resul = s.effectivenessChart[12][9];
-        }else if (pkSelected.getType() == "Rock" && tux.getType() == "Flying"){
-            resul = s.effectivenessChart[12][10];
-        }else if (pkSelected.getType() == "Rock" && tux.getType() == "Psychic"){
-            resul = s.effectivenessChart[12][11];
-        }else if (pkSelected.getType() == "Rock" && tux.getType() == "Bug"){
-            resul = s.effectivenessChart[12][12];
-        }else if (pkSelected.getType() == "Rock" && tux.getType() == "Rock"){
-            resul = s.effectivenessChart[12][13];
-        }else if (pkSelected.getType() == "Rock" && tux.getType() == "Ghost"){
-            resul = s.effectivenessChart[12][14];
-        }else if (pkSelected.getType() == "Rock" && tux.getType() == "Dark"){
-            resul = s.effectivenessChart[12][15];
-        }else if (pkSelected.getType() == "Rock" && tux.getType() == "Steel"){
-            resul = s.effectivenessChart[12][16];
-        }else if(pkSelected.getType() == "Ghost" && tux.getType() == "Normal"){
-            resul = s.effectivenessChart[13][0];
-        }else if (pkSelected.getType() == "Ghost" && tux.getType() == "Fire"){
-            resul = s.effectivenessChart[13][1];
-        }else if (pkSelected.getType() == "Ghost" && tux.getType() == "Water"){
-            resul = s.effectivenessChart[13][2];
-        }else if (pkSelected.getType() == "Ghost" && tux.getType() == "Grass"){
-            resul = s.effectivenessChart[13][3];
-        }else if (pkSelected.getType() == "Ghost" && tux.getType() == "Electric"){
-            resul = s.effectivenessChart[13][4];
-        }else if (pkSelected.getType() == "Ghost" && tux.getType() == "Ice"){
-            resul = s.effectivenessChart[13][5];
-        }else if (pkSelected.getType() == "Ghost" && tux.getType() == "Fighting"){
-            resul = s.effectivenessChart[13][6];
-        }else if (pkSelected.getType() == "Ghost" && tux.getType() == "Poison"){
-            resul = s.effectivenessChart[13][8];
-        }else if (pkSelected.getType() == "Ghost" && tux.getType() == "Ground"){
-            resul = s.effectivenessChart[13][9];
-        }else if (pkSelected.getType() == "Ghost" && tux.getType() == "Flying"){
-            resul = s.effectivenessChart[13][10];
-        }else if (pkSelected.getType() == "Ghost" && tux.getType() == "Psychic"){
-            resul = s.effectivenessChart[13][11];
-        }else if (pkSelected.getType() == "Ghost" && tux.getType() == "Bug"){
-            resul = s.effectivenessChart[13][12];
-        }else if (pkSelected.getType() == "Ghost" && tux.getType() == "Rock"){
-            resul = s.effectivenessChart[13][13];
-        }else if (pkSelected.getType() == "Ghost" && tux.getType() == "Ghost"){
-            resul = s.effectivenessChart[13][14];
-        }else if (pkSelected.getType() == "Ghost" && tux.getType() == "Dark"){
-            resul = s.effectivenessChart[13][15];
-        }else if (pkSelected.getType() == "Ghost" && tux.getType() == "Steel"){
-            resul = s.effectivenessChart[13][16];
-        }else if(pkSelected.getType() == "Dark" && tux.getType() == "Normal"){
-            resul = s.effectivenessChart[14][0];
-        }else if (pkSelected.getType() == "Dark" && tux.getType() == "Fire"){
-            resul = s.effectivenessChart[14][1];
-        }else if (pkSelected.getType() == "Dark" && tux.getType() == "Water"){
-            resul = s.effectivenessChart[14][2];
-        }else if (pkSelected.getType() == "Dark" && tux.getType() == "Grass"){
-            resul = s.effectivenessChart[14][3];
-        }else if (pkSelected.getType() == "Dark" && tux.getType() == "Electric"){
-            resul = s.effectivenessChart[14][4];
-        }else if (pkSelected.getType() == "Dark" && tux.getType() == "Ice"){
-            resul = s.effectivenessChart[14][5];
-        }else if (pkSelected.getType() == "Dark" && tux.getType() == "Fighting"){
-            resul = s.effectivenessChart[14][6];
-        }else if (pkSelected.getType() == "Dark" && tux.getType() == "Poison"){
-            resul = s.effectivenessChart[14][8];
-        }else if (pkSelected.getType() == "Dark" && tux.getType() == "Ground"){
-            resul = s.effectivenessChart[14][9];
-        }else if (pkSelected.getType() == "Dark" && tux.getType() == "Flying"){
-            resul = s.effectivenessChart[14][10];
-        }else if (pkSelected.getType() == "Dark" && tux.getType() == "Psychic"){
-            resul = s.effectivenessChart[14][11];
-        }else if (pkSelected.getType() == "Dark" && tux.getType() == "Bug"){
-            resul = s.effectivenessChart[14][12];
-        }else if (pkSelected.getType() == "Dark" && tux.getType() == "Rock"){
-            resul = s.effectivenessChart[14][13];
-        }else if (pkSelected.getType() == "Dark" && tux.getType() == "Ghost"){
-            resul = s.effectivenessChart[14][14];
-        }else if (pkSelected.getType() == "Dark" && tux.getType() == "Dark"){
-            resul = s.effectivenessChart[14][15];
-        }else if (pkSelected.getType() == "Dark" && tux.getType() == "Steel"){
-            resul = s.effectivenessChart[14][16];
-        }else if(pkSelected.getType() == "Dragon" && tux.getType() == "Normal"){
-            resul = s.effectivenessChart[15][0];
-        }else if (pkSelected.getType() == "Dragon" && tux.getType() == "Fire"){
-            resul = s.effectivenessChart[15][1];
-        }else if (pkSelected.getType() == "Dragon" && tux.getType() == "Water"){
-            resul = s.effectivenessChart[15][2];
-        }else if (pkSelected.getType() == "Dragon" && tux.getType() == "Grass"){
-            resul = s.effectivenessChart[15][3];
-        }else if (pkSelected.getType() == "Dragon" && tux.getType() == "Electric"){
-            resul = s.effectivenessChart[15][4];
-        }else if (pkSelected.getType() == "Dragon" && tux.getType() == "Ice"){
-            resul = s.effectivenessChart[15][5];
-        }else if (pkSelected.getType() == "Dragon" && tux.getType() == "Fighting"){
-            resul = s.effectivenessChart[15][6];
-        }else if (pkSelected.getType() == "Dragon" && tux.getType() == "Poison"){
-            resul = s.effectivenessChart[15][8];
-        }else if (pkSelected.getType() == "Dragon" && tux.getType() == "Ground"){
-            resul = s.effectivenessChart[15][9];
-        }else if (pkSelected.getType() == "Dragon" && tux.getType() == "Flying"){
-            resul = s.effectivenessChart[15][10];
-        }else if (pkSelected.getType() == "Dragon" && tux.getType() == "Psychic"){
-            resul = s.effectivenessChart[15][11];
-        }else if (pkSelected.getType() == "Dragon" && tux.getType() == "Bug"){
-            resul = s.effectivenessChart[15][12];
-        }else if (pkSelected.getType() == "Dragon" && tux.getType() == "Rock"){
-            resul = s.effectivenessChart[15][13];
-        }else if (pkSelected.getType() == "Dragon" && tux.getType() == "Ghost"){
-            resul = s.effectivenessChart[15][14];
-        }else if (pkSelected.getType() == "Dragon" && tux.getType() == "Dark"){
-            resul = s.effectivenessChart[15][15];
-        }else if (pkSelected.getType() == "Dragon" && tux.getType() == "Steel"){
-            resul = s.effectivenessChart[15][16];
-        }else if(pkSelected.getType() == "Steel" && tux.getType() == "Normal"){
-            resul = s.effectivenessChart[16][0];
-        }else if (pkSelected.getType() == "Steel" && tux.getType() == "Fire"){
-            resul = s.effectivenessChart[16][1];
-        }else if (pkSelected.getType() == "Steel" && tux.getType() == "Water"){
-            resul = s.effectivenessChart[16][2];
-        }else if (pkSelected.getType() == "Steel" && tux.getType() == "Grass"){
-            resul = s.effectivenessChart[16][3];
-        }else if (pkSelected.getType() == "Steel" && tux.getType() == "Electric"){
-            resul = s.effectivenessChart[16][4];
-        }else if (pkSelected.getType() == "Steel" && tux.getType() == "Ice"){
-            resul = s.effectivenessChart[16][5];
-        }else if (pkSelected.getType() == "Steel" && tux.getType() == "Fighting"){
-            resul = s.effectivenessChart[16][6];
-        }else if (pkSelected.getType() == "Steel" && tux.getType() == "Poison"){
-            resul = s.effectivenessChart[16][8];
-        }else if (pkSelected.getType() == "Steel" && tux.getType() == "Ground"){
-            resul = s.effectivenessChart[16][9];
-        }else if (pkSelected.getType() == "Steel" && tux.getType() == "Flying"){
-            resul = s.effectivenessChart[16][116];
-        }else if (pkSelected.getType() == "Steel" && tux.getType() == "Psychic"){
-            resul = s.effectivenessChart[16][11];
-        }else if (pkSelected.getType() == "Steel" && tux.getType() == "Bug"){
-            resul = s.effectivenessChart[16][12];
-        }else if (pkSelected.getType() == "Steel" && tux.getType() == "Rock"){
-            resul = s.effectivenessChart[16][13];
-        }else if (pkSelected.getType() == "Steel" && tux.getType() == "Ghost"){
-            resul = s.effectivenessChart[16][14];
-        }else if (pkSelected.getType() == "Steel" && tux.getType() == "Dark"){
-            resul = s.effectivenessChart[16][15];
-        }else if (pkSelected.getType() == "Steel" && tux.getType() == "Steel"){
-            resul = s.effectivenessChart[16][16];
-        }
         
-        return resul;
+        return s.effectivenessChart[pkSelected.getType()][tux.getType()];
     }
 
     private double damage(int power, int defense){
@@ -711,13 +165,24 @@ public class BattleController implements Initializable {
     @FXML
     void onDragDetected(MouseEvent event) {
         /* drag was detected, start drag-and-drop gesture*/
-        System.out.println("onDragDetected");
+//        System.out.println("onDragDetected");
         /* allow any transfer mode */
+        Node source = (Node) event.getSource();
+        ImageView imagenArrastrada = (ImageView) source;
+        String imageUrl = imagenArrastrada.getImage().getUrl();
+        String nombreImagen = imageUrl.substring(imageUrl.lastIndexOf('/') + 1);
+        System.out.println(imageUrl);
+        System.out.println(nombreImagen);
+        if(nombreImagen.equals( "pokeball.png")){
+            return;
+        }
+
         Dragboard db = ((ImageView) event.getSource()).startDragAndDrop(TransferMode.ANY);
         /* put a string on dragboard */
         ClipboardContent content = new ClipboardContent();
         pokemonSelected = (ImageView) event.getSource();
         content.putImage(pokemonSelected.getImage());
+        content.putString(nombreImagen.split("\\.")[0]);
         db.setContent(content);
         event.consume();
     }
@@ -725,7 +190,7 @@ public class BattleController implements Initializable {
     @FXML
     void onDragDone(DragEvent event) {
         /* the drag-and-drop gesture ended */
-        System.out.println("onDragDone");
+//        System.out.println("onDragDone");
         /* if the data was successfully moved, clear it */
         if (event.getTransferMode() == TransferMode.MOVE) {
             // Any cleanup code if needed
@@ -736,7 +201,7 @@ public class BattleController implements Initializable {
     @FXML
     void onDragDropped(DragEvent event) {
         /* data dropped */
-        System.out.println("onDragDropped");
+//        System.out.println("onDragDropped");
         /* if there is an image data on dragboard, read it and use it */
         Dragboard db = event.getDragboard();
         boolean success = false;
@@ -744,6 +209,12 @@ public class BattleController implements Initializable {
             Image droppedImage = db.getImage();
             imageAttack.setImage(droppedImage);
             success = true;
+        }
+        int idPokemon = Integer.parseInt(db.getString());
+        for(int i =0; i<pokemonList.size(); i++){
+            if(idPokemon == pokemonList.get(i).id ){
+                pkSelected = pokemonList.get(i);
+            }
         }
         /* let the source know whether the image was successfully
          * transferred and used */
@@ -754,15 +225,11 @@ public class BattleController implements Initializable {
     @FXML
     void onDragEntered(DragEvent event) {
         /* the drag-and-drop gesture entered the target */
-        System.out.println("onDragEntered");
+//        System.out.println("onDragEntered");
         /* show to the user that it is an actual gesture target */
-        Node source = (Node) event.getSource();
-        ImageView imagenArrastrada = (ImageView) source;
-        System.out.println(imagenArrastrada.getImage().getUrl());
         if (event.getGestureSource() != imageAttack &&
                 event.getDragboard().hasImage()) {
             imageAttack.setOpacity(0.3); // Highlight effect
-
         }
 
         event.consume();
@@ -778,7 +245,7 @@ public class BattleController implements Initializable {
     @FXML
     void onDragOver(DragEvent event) {
         /* data is dragged over the target */
-        System.out.println("onDragOver");
+//        System.out.println("onDragOver");
         /* accept it only if it is not dragged from the same node
          * and if it has an image data */
         if (event.getGestureSource() != imageAttack &&

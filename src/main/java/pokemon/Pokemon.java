@@ -6,11 +6,12 @@ import java.util.List;
 public class Pokemon {
     protected int id;
     protected String name;
-    protected String type;
+    protected Type type;
     protected String trainer;
     protected int level;
     protected int hp;
     protected int maxHp;
+    protected static Type[]  tipos= Type.values();
     protected List<Integer> atributes = new ArrayList<>();
     /*
        Orden Atributos
@@ -24,7 +25,8 @@ public class Pokemon {
        Singleton s = Singleton.getInstance();
             this.id = id;
             this.name = Query.pokemonName(id);
-            this.type = Query.pokemonType(id);
+            this.type = tipos[Query.pokemonType(id)-1];
+            System.out.println(this.type);
             this.trainer = s.getTrainerSelection();
             this.atributes = Query.pokemonAtributes(id);
 
@@ -54,13 +56,11 @@ public class Pokemon {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public int getType() {
+
+        return type.getPosition();
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
 
     public String getTrainer() {
         return trainer;
@@ -129,11 +129,7 @@ public class Pokemon {
         int SPE = atributes.get(3);
         int DEF = atributes.get(4);
 
-        String Type = Query.pokemonType(this.id);
-        if(Type == null){
-            Type="Typeless";
-        }
-        String cadena = "Vida: " + HP + "\r\n" + "Ataques: " + ATT + "\r\n" + "Ataque Especial : " + SATT + "\r\n" + "Velocidad: " + SPE + "\r\n" + "Defensa: " + DEF + "\r\n" + "Tipo: " + Type;
+        String cadena = "Vida: " + HP + "\r\n" + "Ataques: " + ATT + "\r\n" + "Ataque Especial : " + SATT + "\r\n" + "Velocidad: " + SPE + "\r\n" + "Defensa: " + DEF + "\r\n" + "Tipo: " + type;
         return cadena;
     }
     public String setTuxStats() {

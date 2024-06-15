@@ -183,14 +183,14 @@ public class Query {
         }
     }
 
-    public static String pokemonType(int pokemonId){
+    public static int pokemonType(int pokemonId){
         Singleton s = Singleton.getInstance();
-        String pokemonType;
+        int pokemonType=0;
         try {
             String databaseUrl =s.getDatabaseUrl();
             Connection connection = DriverManager.getConnection(databaseUrl, s.getDatabaseUser(), s.getDatabasePassword());
 
-            String query = "SELECT p.Pokemon, t.Type\n" +
+            String query = "SELECT p.Pokemon, t.ID_Type\n" +
                     "FROM Pokemon p\n" +
                     "         JOIN Rel_Pokemon_Type rpt ON p.ID_Pokemon = rpt.ID_Pokemon\n" +
                     "         JOIN Types t ON rpt.ID_Type = t.ID_Type\n" +
@@ -200,42 +200,41 @@ public class Query {
 
             ResultSet pokemon = statement.executeQuery();
             pokemon.next();
-            pokemonType = pokemon.getString("Type");
+            pokemonType = pokemon.getInt(2);
 
             connection.close();
-            return pokemonType;
+
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-            return null;
         }
 
+        return pokemonType;
     }
 
-    public static String tuxType(){
+    public static int tuxTypeId(){
         Singleton s = Singleton.getInstance();
-        String tuxType;
+        int tuxType=0;
         try {
             String databaseUrl =s.getDatabaseUrl();
             Connection connection = DriverManager.getConnection(databaseUrl, s.getDatabaseUser(), s.getDatabasePassword());
 
             //Genera un numero aleotorio el cual corresponde a un tipo de pokemon
-            int num = (int) (Math.random()*17);
+            int num = (int) (Math.random()*17)+1;
 
-            String query = "SELECT Type from Types WHERE ID_Type =" + num;
+            String query = "SELECT ID_Type from Types WHERE ID_Type =" + num;
             PreparedStatement statement = connection.prepareStatement(query);
 
             ResultSet pokemon = statement.executeQuery();
             pokemon.next();
-            tuxType = pokemon.getString("Type");
+            tuxType = pokemon.getInt("ID_Type");
 
             connection.close();
-            return tuxType;
+
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-            return null;
         }
-
+        return tuxType;
     }
 }
