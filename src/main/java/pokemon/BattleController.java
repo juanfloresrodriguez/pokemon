@@ -2,6 +2,7 @@ package pokemon;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
@@ -81,16 +82,17 @@ public class BattleController implements Initializable {
     @FXML
     private Button SpecialAttackButton;
 
+    List<Pokemon> pokemonList;
+
+    ImageView[] pokemonImages;
+
+    Text[] pokemonAtributtes;
+
     Pokemon pk1, pk2, pk3, pk4, pk5, pk6, tux, pkSelected;
 
-    @FXML
-    void setPokemonImages(){
-        Singleton s = Singleton.getInstance();
 
-        List<Integer> pokemonId = new ArrayList<>();
-        pokemonId.addAll(s.getPokemonId());
-
-        File file, file1, file2, file3, file4, file5, back, tux;
+    void setBattleStage(){
+        File file, back, tux;
 
         back = new File("imagenes/battle_background.jpg");
         background.setImage(new Image(back.toURI().toString()));
@@ -98,191 +100,24 @@ public class BattleController implements Initializable {
         tux = new File("imagenes/pokemon/tux.png");
         imageTux.setImage(new Image(tux.toURI().toString()));
 
-        switch(pokemonId.size()) {
-            case 1: //Un solo pokemon
-                file = new File("imagenes/pokemon/" + pokemonId.get(0) + ".png");
-                pokemon1.setImage(new Image(file.toURI().toString()));
-                //POKEBALLS
-                file1 = new File("imagenes/pokemon/pokeball.png");
-                pokemon2.setImage(new Image(file1.toURI().toString()));
+        for(int i =0; i<pokemonList.size(); i++){
+            file = new File("imagenes/pokemon/" + pokemonList.get(i).getId() + ".png");
+            pokemonImages[i].setImage(new Image(file.toURI().toString()));
+        }
 
-                file2 = new File("imagenes/pokemon/pokeball.png");
-                pokemon3.setImage(new Image(file2.toURI().toString()));
-
-                file3 = new File("imagenes/pokemon/pokeball.png");
-                pokemon4.setImage(new Image(file3.toURI().toString()));
-
-                file4 = new File("imagenes/pokemon/pokeball.png");
-                pokemon5.setImage(new Image(file4.toURI().toString()));
-
-                file5 = new File("imagenes/pokemon/pokeball.png");
-                pokemon6.setImage(new Image(file5.toURI().toString()));
-                break;
-            case 2:
-                file = new File("imagenes/pokemon/" + pokemonId.get(0) + ".png");
-                pokemon1.setImage(new Image(file.toURI().toString()));
-
-                file1 = new File("imagenes/pokemon/" + pokemonId.get(1) + ".png");
-                pokemon2.setImage(new Image(file1.toURI().toString()));
-
-                //POKEBALLS
-                file2 = new File("imagenes/pokemon/pokeball.png");
-                pokemon3.setImage(new Image(file2.toURI().toString()));
-
-                file3 = new File("imagenes/pokemon/pokeball.png");
-                pokemon4.setImage(new Image(file3.toURI().toString()));
-
-                file4 = new File("imagenes/pokemon/pokeball.png");
-                pokemon5.setImage(new Image(file4.toURI().toString()));
-
-                file5 = new File("imagenes/pokemon/pokeball.png");
-                pokemon6.setImage(new Image(file5.toURI().toString()));
-
-                break;
-            case 3:
-                file = new File("imagenes/pokemon/" + pokemonId.get(0) + ".png");
-                pokemon1.setImage(new Image(file.toURI().toString()));
-
-                file1 = new File("imagenes/pokemon/" + pokemonId.get(1) + ".png");
-                pokemon2.setImage(new Image(file1.toURI().toString()));
-
-                file2 = new File("imagenes/pokemon/" + pokemonId.get(2) + ".png");
-                pokemon3.setImage(new Image(file2.toURI().toString()));
-
-                //POKEBALLS
-                file3 = new File("imagenes/pokemon/pokeball.png");
-                pokemon4.setImage(new Image(file3.toURI().toString()));
-
-                file4 = new File("imagenes/pokemon/pokeball.png");
-                pokemon5.setImage(new Image(file4.toURI().toString()));
-
-                file5 = new File("imagenes/pokemon/pokeball.png");
-                pokemon6.setImage(new Image(file5.toURI().toString()));
-
-                break;
-            case 4:
-                file = new File("imagenes/pokemon/" + pokemonId.get(0) + ".png");
-                pokemon1.setImage(new Image(file.toURI().toString()));
-
-                file1 = new File("imagenes/pokemon/" + pokemonId.get(1) + ".png");
-                pokemon2.setImage(new Image(file1.toURI().toString()));
-
-                file2 = new File("imagenes/pokemon/" + pokemonId.get(2) + ".png");
-                pokemon3.setImage(new Image(file2.toURI().toString()));
-
-                file3 = new File("imagenes/pokemon/" + pokemonId.get(3) + ".png");
-                pokemon4.setImage(new Image(file3.toURI().toString()));
-
-                //POKEBALLS
-                file4 = new File("imagenes/pokemon/pokeball.png");
-                pokemon5.setImage(new Image(file4.toURI().toString()));
-
-                file5 = new File("imagenes/pokemon/pokeball.png");
-                pokemon6.setImage(new Image(file5.toURI().toString()));
-
-                break;
-            case 5:
-                file = new File("imagenes/pokemon/" + pokemonId.get(0) + ".png");
-                pokemon1.setImage(new Image(file.toURI().toString()));
-
-                file1 = new File("imagenes/pokemon/" + pokemonId.get(1) + ".png");
-                pokemon2.setImage(new Image(file1.toURI().toString()));
-
-                file2 = new File("imagenes/pokemon/" + pokemonId.get(2) + ".png");
-                pokemon3.setImage(new Image(file2.toURI().toString()));
-
-                file3 = new File("imagenes/pokemon/" + pokemonId.get(3) + ".png");
-                pokemon4.setImage(new Image(file3.toURI().toString()));
-
-                file4 = new File("imagenes/pokemon/" + pokemonId.get(4) + ".png");
-                pokemon5.setImage(new Image(file4.toURI().toString()));
-
-                //POKEBALLS
-                file5 = new File("imagenes/pokemon/pokeball.png");
-                pokemon6.setImage(new Image(file5.toURI().toString()));
-
-                break;
-            case 6:
-                file = new File("imagenes/pokemon/" + pokemonId.get(0) + ".png");
-                pokemon1.setImage(new Image(file.toURI().toString()));
-
-                file1 = new File("imagenes/pokemon/" + pokemonId.get(1) + ".png");
-                pokemon2.setImage(new Image(file1.toURI().toString()));
-
-                file2 = new File("imagenes/pokemon/" + pokemonId.get(2) + ".png");
-                pokemon3.setImage(new Image(file2.toURI().toString()));
-
-                file3 = new File("imagenes/pokemon/" + pokemonId.get(3) + ".png");
-                pokemon4.setImage(new Image(file3.toURI().toString()));
-
-                file4 = new File("imagenes/pokemon/" + pokemonId.get(4) + ".png");
-                pokemon5.setImage(new Image(file4.toURI().toString()));
-
-                file5 = new File("imagenes/pokemon/" + pokemonId.get(5) + ".png");
-                pokemon6.setImage(new Image(file5.toURI().toString()));
-                break;
+        int count = 6 - pokemonList.size();
+        int numPokemon = pokemonList.size();
+        if(count >0) {
+            for (int i = 0; i < count; i++) {
+                file = new File("imagenes/pokeball/pokeball.png");
+                pokemonImages[numPokemon+i].setImage(new Image(file.toURI().toString()));
+            }
         }
     }
 
     private void setStats(){
-        Singleton s = Singleton.getInstance();
-        String cadena1, cadena2, cadena3, cadena4, cadena5, cadena6;
-
-        switch (s.getPokemonId().size()){
-            case 1:
-                cadena1=pk1.setPokemonAtributes();
-                atributtesPokemon1.setText(cadena1);
-                break;
-            case 2:
-                cadena1=pk1.setPokemonAtributes();
-                atributtesPokemon1.setText(cadena1);
-                cadena2=pk2.setPokemonAtributes();
-                atributtesPokemon2.setText(cadena2);
-                break;
-            case 3:
-                cadena1=pk1.setPokemonAtributes();
-                atributtesPokemon1.setText(cadena1);
-                cadena2=pk2.setPokemonAtributes();
-                atributtesPokemon2.setText(cadena2);
-                cadena3=pk3.setPokemonAtributes();
-                atributtesPokemon3.setText(cadena3);
-                break;
-            case 4:
-                cadena1=pk1.setPokemonAtributes();
-                atributtesPokemon1.setText(cadena1);
-                cadena2=pk2.setPokemonAtributes();
-                atributtesPokemon2.setText(cadena2);
-                cadena3=pk3.setPokemonAtributes();
-                atributtesPokemon3.setText(cadena3);
-                cadena4=pk4.setPokemonAtributes();
-                atributtesPokemon4.setText(cadena4);
-                break;
-            case 5:
-                cadena1=pk1.setPokemonAtributes();
-                atributtesPokemon1.setText(cadena1);
-                cadena2=pk2.setPokemonAtributes();
-                atributtesPokemon2.setText(cadena2);
-                cadena3=pk3.setPokemonAtributes();
-                atributtesPokemon3.setText(cadena3);
-                cadena4=pk4.setPokemonAtributes();
-                atributtesPokemon4.setText(cadena4);
-                cadena5=pk5.setPokemonAtributes();
-                atributtesPokemon5.setText(cadena5);
-                break;
-            case 6:
-                cadena1=pk1.setPokemonAtributes();
-                atributtesPokemon1.setText(cadena1);
-                cadena2=pk2.setPokemonAtributes();
-                atributtesPokemon2.setText(cadena2);
-                cadena3=pk3.setPokemonAtributes();
-                atributtesPokemon3.setText(cadena3);
-                cadena4=pk4.setPokemonAtributes();
-                atributtesPokemon4.setText(cadena4);
-                cadena5=pk5.setPokemonAtributes();
-                atributtesPokemon5.setText(cadena5);
-                cadena6=pk6.setPokemonAtributes();
-                atributtesPokemon6.setText(cadena6);
-                break;
+        for(int i=0; i<this.pokemonList.size(); i++){
+            pokemonAtributtes[i].setText(pokemonList.get(i).getPokemonAtributes());
         }
     }
 
@@ -921,10 +756,15 @@ public class BattleController implements Initializable {
         /* the drag-and-drop gesture entered the target */
         System.out.println("onDragEntered");
         /* show to the user that it is an actual gesture target */
+        Node source = (Node) event.getSource();
+        ImageView imagenArrastrada = (ImageView) source;
+        System.out.println(imagenArrastrada.getImage().getUrl());
         if (event.getGestureSource() != imageAttack &&
                 event.getDragboard().hasImage()) {
             imageAttack.setOpacity(0.3); // Highlight effect
+
         }
+
         event.consume();
     }
 
@@ -951,75 +791,48 @@ public class BattleController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        setPokemonImages();
-        Singleton s = Singleton.getInstance();
-        s.getTrainerPokemonMap();
+        try {
+            Singleton s = Singleton.getInstance();
+            s.getTrainerPokemonMap();
+            pokemonImages = new ImageView[] {pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6};
+            pokemonAtributtes = new Text[] {atributtesPokemon1, atributtesPokemon2, atributtesPokemon3, atributtesPokemon4, atributtesPokemon5, atributtesPokemon6};
 
-        //Iniciamos al tux
-       try {
+            //Iniciamos al tux
+            try {
 
-            tux = new Tux(1);
-            setTuxStats(tux);
-            setTuxText();
+                tux = new Tux(1);
+                setTuxStats(tux);
+                setTuxText();
 
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("Error creating Tux: " + e.getMessage()); // Debugging statement
+            }
+            //Inicicializamos los Pokemons
+
+            List<Integer> pokemonId = new ArrayList<>();
+            pokemonId.addAll(s.getPokemonId());
+
+            this.pokemonList = new ArrayList<>();
+            for (int i = 0; i < pokemonId.size(); i++) {
+                this.pokemonList.add(new Pokemon(pokemonId.get(i)));
+            }
+
+            setBattleStage();
+            setStats();
+            // Establecemos los atributos para que se puedan arrastrar los pokemon
+            ImageView[] pokemons = {pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6};
+            for (ImageView pokemon : pokemons) {
+                pokemon.setOnDragDetected(this::onDragDetected);
+                pokemon.setOnDragDone(this::onDragDone);
+            }
+            imageAttack.setOnDragOver(this::onDragOver);
+            imageAttack.setOnDragDropped(this::onDragDropped);
+            imageAttack.setOnDragEntered(this::onDragEntered);
+            imageAttack.setOnDragExited(this::onDragExited);
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Error creating Tux: " + e.getMessage()); // Debugging statement
         }
-        //Inicicializamos los Pokemons
-        List<Integer> pokemonId = new ArrayList<>();
-        pokemonId.addAll(s.getPokemonId());
-
-        switch (pokemonId.size()){
-
-            case 1:
-                pk1 = new Pokemon(pokemonId.get(0));
-                break;
-            case 2:
-                pk1 = new Pokemon(pokemonId.get(0));
-                pk2 = new Pokemon(pokemonId.get(1));
-                break;
-            case 3:
-                pk1 = new Pokemon(pokemonId.get(0));
-                pk2 = new Pokemon(pokemonId.get(1));
-                pk3 = new Pokemon(pokemonId.get(2));
-
-                break;
-            case 4:
-                pk1 = new Pokemon(pokemonId.get(0));
-                pk2 = new Pokemon(pokemonId.get(1));
-                pk3 = new Pokemon(pokemonId.get(2));
-                pk4 = new Pokemon(pokemonId.get(3));
-                break;
-            case 5:
-                pk1 = new Pokemon(pokemonId.get(0));
-                pk2 = new Pokemon(pokemonId.get(1));
-                pk3 = new Pokemon(pokemonId.get(2));
-                pk4 = new Pokemon(pokemonId.get(3));
-                pk5 = new Pokemon(pokemonId.get(4));
-                break;
-            case 6:
-                pk1 = new Pokemon(pokemonId.get(0));
-                pk2 = new Pokemon(pokemonId.get(1));
-                pk3 = new Pokemon(pokemonId.get(2));
-                pk4 = new Pokemon(pokemonId.get(3));
-                pk5 = new Pokemon(pokemonId.get(4));
-                pk6 = new Pokemon(pokemonId.get(5));
-                break;
-        }
-
-        setStats();
-        // Establecemos los atributos para que se puedan arrastrar los pokemon
-        ImageView[] pokemons = {pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6};
-        for (ImageView pokemon : pokemons) {
-            pokemon.setOnDragDetected(this::onDragDetected);
-            pokemon.setOnDragDone(this::onDragDone);
-        }
-        imageAttack.setOnDragOver(this::onDragOver);
-        imageAttack.setOnDragDropped(this::onDragDropped);
-        imageAttack.setOnDragEntered(this::onDragEntered);
-        imageAttack.setOnDragExited(this::onDragExited);
     }
-
 }
 

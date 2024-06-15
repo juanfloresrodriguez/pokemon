@@ -122,7 +122,7 @@ public class Pokemon {
         }
     }
 
-    public String setPokemonAtributes(){
+    public String getPokemonAtributes(){
         int HP = atributes.get(0);
         int ATT = atributes.get(1);
         int SATT = atributes.get(2);
