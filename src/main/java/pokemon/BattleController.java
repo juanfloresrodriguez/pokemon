@@ -3,9 +3,7 @@ package pokemon;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
@@ -53,7 +51,7 @@ public class BattleController implements Initializable {
     private ImageView imageTux;
 
     @FXML
-    private TextField log;
+    private TextArea log;
 
     @FXML
     private ImageView pokemon1;
@@ -94,7 +92,18 @@ public class BattleController implements Initializable {
     private int countTux = 0;
 
     Pokemon pk1, pk2, pk3, pk4, pk5, pk6, tux, pkSelected;
+    private String logMessage = "";
 
+    public String getLogMessage()
+    {
+        return logMessage;
+    }
+
+    public void setLogMessage(String status)
+    {
+
+        logMessage = logMessage + " \n" + status;
+    }
 
     void setBattleStage(){
         File file, back, tux;
@@ -142,6 +151,10 @@ public class BattleController implements Initializable {
         double initialHealth = tux.getAtributes().get(0);
 
         tux.atributes.set(0, (int) (initialHealth - damage));
+
+        setLogMessage(pkSelected.getName() + " ha realizado un Ataque normal a Tux realizando " + (int) damage + " daño.");
+        log.setText(logMessage);
+
         gameplay();
     }
 
@@ -151,6 +164,10 @@ public class BattleController implements Initializable {
         double initialHealth = tux.getAtributes().get(0);
 
         tux.atributes.set(0, (int) (initialHealth - damage));
+
+        setLogMessage(pkSelected.getName() + " ha realizado un Ataque especial a Tux realizando " + (int) damage + " daño.");
+        log.setText(logMessage);
+
         gameplay();
     }
 
@@ -176,7 +193,6 @@ public class BattleController implements Initializable {
 
         damage = 0.1 * b * e * v * ((upperOperation/downOperation)+2);
 
-        System.out.println("Pokemon: " + damage);
         return (int) damage;
     }
 
@@ -197,7 +213,8 @@ public class BattleController implements Initializable {
         damage = 0.1 * b * e * v * ((upperOperation/downOperation)+2);
 
 
-        System.out.println("Tux: " + damage);
+        setLogMessage("Tux ha atacado a " + pkSelected.getName() +" realizando " + (int) damage + " daño.");
+        log.setText(logMessage);
         return (int) damage;
     }
 
@@ -418,10 +435,26 @@ public class BattleController implements Initializable {
             e.printStackTrace();
         }
 
-//           gameplay();
-
-
-
+        if(pkSelected == null) {
+            int speed = 0;
+            int selected = 0;
+            for (int i = 0; i < pokemonList.size(); i++) {
+                if (pokemonList.get(i).getAtributes().get(3) > speed) {
+                    speed = pokemonList.get(i).getAtributes().get(3);
+                    selected = i;
+                }
+            }
+            //colocamos el pokemon que más velocidad tiene
+            try {
+                File pk = new File("imagenes/pokemon/" + pokemonList.get(selected).getId() + ".png");
+                imageAttack.setImage(new Image(pk.toURI().toString()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            pkSelected = pokemonList.get(selected);
+            setLogMessage("Se ha elegido el pokemon con mayor velocidad para comenzar la partida: " + pkSelected.getName());
+            log.setText(logMessage);
+        }
     }
 }
 
