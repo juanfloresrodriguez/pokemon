@@ -13,16 +13,21 @@
             <Font size="35.0" />
          </font>
       </Text>
-      <TextField fx:id="databaseIP" layoutX="57.0" layoutY="102.0" promptText="IP" text="localhost" />
-      <TextField fx:id="databaseName" layoutX="57.0" layoutY="160.0" promptText="BBDD" text="pokemon" />
-      <TextField fx:id="databasePort" layoutX="57.0" layoutY="211.0" promptText="Puerto" text="3306" />
-      <TextField fx:id="databaseUser" layoutX="373.0" layoutY="127.0" promptText="Usuario" text="root" />
-      <TextField fx:id="databasePass" layoutX="373.0" layoutY="173.0" promptText="Contraseña" />
+      <TextField fx:id="databaseIP" alignment="TOP_CENTER" layoutX="57.0" layoutY="102.0" promptText="IP" text="localhost" />
+      <TextField fx:id="databaseName" alignment="TOP_CENTER" layoutX="57.0" layoutY="160.0" promptText="BBDD" text="pokemon" />
+      <TextField fx:id="databasePort" alignment="TOP_CENTER" layoutX="57.0" layoutY="211.0" promptText="Puerto" text="3306" />
+      <TextField fx:id="databaseUser" alignment="TOP_CENTER" layoutX="373.0" layoutY="127.0" promptText="Usuario" text="root" />
+      <TextField fx:id="databasePass" alignment="TOP_CENTER" layoutX="373.0" layoutY="173.0" promptText="Contraseña" />
       <Text layoutX="426.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario" />
       <Text layoutX="417.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña" />
       <Button fx:id="databaseTest" layoutX="484.0" layoutY="331.0" mnemonicParsing="false" onAction="#testConnection" text="Test" />
       <Button fx:id="databaseAcept" layoutX="373.0" layoutY="331.0" mnemonicParsing="false" onAction="#saveConnection" text="Aceptar" />
       <Button fx:id="databaseExit" layoutX="112.0" layoutY="331.0" mnemonicParsing="false" onAction="#exitProgram" text="Salir" />
       <Text fx:id="connectionStatus" layoutX="259.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="82.0" />
+      <TextField fx:id="driver" alignment="TOP_CENTER" layoutX="57.0" layoutY="267.0" promptText="Puerto" text="jbc" />
+      <Text layoutX="126.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IP" textAlignment="CENTER" />
+      <Text layoutX="100.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre BD" textAlignment="CENTER" />
+      <Text layoutX="108.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Puerto" textAlignment="CENTER" />
+      <Text layoutX="114.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Driver" />
    </children>
 </Pane>

@@ -149,9 +149,6 @@ public class Singleton {
 //    Map<Integer, List<String>>
     public void getTrainerPokemonMap() {
         for(int i=0; i < pokemonId.size(); i++){
-//            List<String> atributes = new ArrayList<>();
-//            atributes.add(Query.pokemonAtributes(pokemonId.get(i)));
-//            this.trainerPokemon.put(pokemonId.get(i), atributes);
             this.trainerPokemon.put(pokemonId.get(i), Query.pokemonAtributes(pokemonId.get(i)));
         }
 

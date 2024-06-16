@@ -131,8 +131,10 @@ public class BattleController implements Initializable {
     }
     @FXML
     void attack() {
-        tux.hp-=damage(pkSelected.getAtributes().get(1), pkSelected.getAtributes().get(4));
+        double damage = damage(pkSelected.getAtributes().get(1), pkSelected.getAtributes().get(4));
+        double initialHealth = tux.hp;
 
+        tux.setHp((int) (initialHealth - damage));
     }
 
     @FXML
@@ -155,12 +157,91 @@ public class BattleController implements Initializable {
         d=defense;
         b=typeMultiplier();
         e=1;
+        v=(int) (Math.random()*100+85);
+
+        damage = 0.01 * b * e * v * ((((0.2*n+1)*a*p)/25*d)+2);
+
+        System.out.println("Pokemon: " + damage);
+        return damage;
+    }
+
+    private double damageTux(int power, int defense){
+        double b, e, v, n, a, p, d;
+        double damage;
+        n=tux.level;
+        a=1;
+        p=power;
+        d=defense;
+        b=typeMultiplier();
+        e=1;
         v=(int) (Math.random()*100)+85;
 
         damage = 0.01 * b * e * v * ((((0.2*n+1)*a*p)/25*d)+2);
 
+        System.out.println("Tux: " + damage);
         return damage;
     }
+
+    private void tuxAttack() {
+        int prob = (int) (Math.random()*20);
+        if (prob < 20) {
+            pkSelected.hp-=damageTux(tux.getAtributes().get(2), tux.getAtributes().get(4));
+        }else{
+            pkSelected.hp-=damageTux(tux.getAtributes().get(1), tux.getAtributes().get(4));
+        }
+    }
+
+    private void reloadStats() {
+        setStats();
+        setTuxText();
+        setTuxStats(tux);
+    }
+
+    private void gameplay() {
+        int cont=0;
+        if(pkSelected != null) {
+            while (pkSelected.hp > 0) {
+                if (tux.hp <= 0) {
+                    tux = new Tux(1);
+                    reloadStats();
+                    cont++;
+                    System.out.println(cont);
+                }
+
+                attackButton.setDisable(false);
+                SpecialAttackButton.setDisable(false);
+
+                reloadStats();
+
+                attackButton.setDisable(true);
+                SpecialAttackButton.setDisable(true);
+                tuxAttack();
+
+                reloadStats();
+            }
+        }else {
+            int speed = 0;
+            int selected = 0;
+            for (int i=0; i< pokemonList.size(); i++){
+                if(pokemonList.get(i).getAtributes().get(3) > speed) {
+                    speed = pokemonList.get(i).getAtributes().get(3);
+                    selected = i;
+                }
+            }
+
+            try {
+                File pk = new File("imagenes/pokemon/" + pokemonList.get(selected).getId() + ".png");
+                imageAttack.setImage(new Image(pk.toURI().toString()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            pkSelected = pokemonList.get(selected);
+            System.out.println(pkSelected.name);
+
+
+        }
+    }
+
 
     @FXML
     void onDragDetected(MouseEvent event) {
@@ -194,6 +275,7 @@ public class BattleController implements Initializable {
         /* if the data was successfully moved, clear it */
         if (event.getTransferMode() == TransferMode.MOVE) {
             // Any cleanup code if needed
+
         }
         event.consume();
     }
@@ -287,6 +369,7 @@ public class BattleController implements Initializable {
 
             setBattleStage();
             setStats();
+
             // Establecemos los atributos para que se puedan arrastrar los pokemon
             ImageView[] pokemons = {pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6};
             for (ImageView pokemon : pokemons) {
@@ -300,6 +383,18 @@ public class BattleController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+//        try{
+//           while (pkSelected == null){
+//               Thread.sleep(300);
+//           }
+           gameplay();
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
+
     }
 }
 

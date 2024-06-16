@@ -46,6 +46,9 @@ public class ConnectionDbController implements Initializable {
     @FXML
     private TextField databaseUser;
 
+    @FXML
+    private TextField driver;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -84,7 +87,6 @@ public class ConnectionDbController implements Initializable {
     }
 
     public void testConnection() {
-//        logger.debug("testConnection");
         connectionStatus.setText("Intentando conectar ...");
         boolean isConnected = DatabaseManager.testConnection(databaseIP.getText(), databasePort.getText(), databaseName.getText(), databaseUser.getText(), databasePass.getText());
         if(isConnected) {

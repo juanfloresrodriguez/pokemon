@@ -15,11 +15,11 @@ public class Pokemon {
     protected List<Integer> atributes = new ArrayList<>();
     /*
        Orden Atributos
-        HP
-        Attack
-        Special Attack
-        Speed
-        Defense
+      0  HP
+      1  Attack
+      2  Special Attack
+      3  Speed
+      4  Defense
    */
     public Pokemon(int id) {
        Singleton s = Singleton.getInstance();
@@ -84,6 +84,14 @@ public class Pokemon {
 
     public void setAtributes(List<Integer> atributes) {
         this.atributes = atributes;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
     }
 
     private void changeAtributes() {
