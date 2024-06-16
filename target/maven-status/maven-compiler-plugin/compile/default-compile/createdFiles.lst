@@ -1,4 +1,4 @@
 pokemon\App.class
-module-info.class
 pokemon\ConnectionDbController.class
+module-info.class
 pokemon\Singleton.class

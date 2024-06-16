@@ -1,0 +1,38 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="pokemon">
+    <output-path>$PROJECT_DIR$/out/artifacts/pokemon</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="pokemon.App" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="icons">
+          <JavaFxApplicationIcons>
+            <option name="linuxIcon" value="$PROJECT_DIR$/imagenes/pokeball/pokeball.png" />
+            <option name="windowsIcon" value="$PROJECT_DIR$/imagenes/pokeball/pokeball.ico" />
+          </JavaFxApplicationIcons>
+        </option>
+        <option name="title" value="Pokemon-JFR" />
+        <option name="vendor" value="Juan Flores Rodríguez" />
+        <option name="version" value="0.9" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="pokemon.jar">
+        <element id="module-output" name="pokemon" />
+        <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.21.9" />
+        <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:win:21" />
+        <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:win:21" />
+        <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:21" />
+        <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:win:21" />
+        <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:21" />
+        <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:21" />
+        <element id="library" level="project" name="Maven: org.openjfx:javafx-base:win:21" />
+        <element id="library" level="project" name="Maven: org.openjfx:javafx-base:21" />
+        <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.17.0" />
+        <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.17.0" />
+        <element id="library" level="project" name="Maven: com.mysql:mysql-connector-j:8.0.33" />
+      </element>
+    </root>
+  </artifact>
+</component>
