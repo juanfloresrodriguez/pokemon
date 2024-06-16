@@ -82,11 +82,16 @@ public class BattleController implements Initializable {
     @FXML
     private Button SpecialAttackButton;
 
+    @FXML
+    private Text diedTuxCounter;
+
     List<Pokemon> pokemonList;
 
     ImageView[] pokemonImages;
 
     Text[] pokemonAtributtes;
+
+    private int countTux = 0;
 
     Pokemon pk1, pk2, pk3, pk4, pk5, pk6, tux, pkSelected;
 
@@ -122,24 +127,31 @@ public class BattleController implements Initializable {
     }
 
     private void setTuxStats(Pokemon tux){
-        double progress = (double) tux.hp / tux.maxHp;
+        double progress = (double) tux.getAtributes().get(0) / tux.maxHp;
         hpTux.setProgress(progress);
     }
 
     private void setTuxText() {
         atributtesTux.setText(tux.setTuxStats());
+        diedTuxCounter.setText("Tux muertos: " + countTux);
     }
+
     @FXML
-    void attack() {
+    void attack() throws InterruptedException {
         double damage = damage(pkSelected.getAtributes().get(1), pkSelected.getAtributes().get(4));
-        double initialHealth = tux.hp;
+        double initialHealth = tux.getAtributes().get(0);
 
-        tux.setHp((int) (initialHealth - damage));
+        tux.atributes.set(0, (int) (initialHealth - damage));
+        gameplay();
     }
 
     @FXML
-    void specialAttack() {
-        tux.hp-=damage(pkSelected.getAtributes().get(2), pkSelected.getAtributes().get(4));
+    void specialAttack() throws InterruptedException {
+        double damage = damage(pkSelected.getAtributes().get(2), pkSelected.getAtributes().get(4));
+        double initialHealth = tux.getAtributes().get(0);
+
+        tux.atributes.set(0, (int) (initialHealth - damage));
+        gameplay();
     }
 
     private double typeMultiplier() {
@@ -148,7 +160,7 @@ public class BattleController implements Initializable {
         return s.effectivenessChart[pkSelected.getType()][tux.getType()];
     }
 
-    private double damage(int power, int defense){
+    private int damage(int power, int defense){
         double b, e, v, n, a, p, d;
         double damage;
         n=pkSelected.level;
@@ -159,13 +171,16 @@ public class BattleController implements Initializable {
         e=1;
         v=(int) (Math.random()*100+85);
 
-        damage = 0.01 * b * e * v * ((((0.2*n+1)*a*p)/25*d)+2);
+        double upperOperation = (0.2 * n  + 1) * a * p ;
+        double downOperation = 25 * d;
+
+        damage = 0.1 * b * e * v * ((upperOperation/downOperation)+2);
 
         System.out.println("Pokemon: " + damage);
-        return damage;
+        return (int) damage;
     }
 
-    private double damageTux(int power, int defense){
+    private int damageTux(int power, int defense){
         double b, e, v, n, a, p, d;
         double damage;
         n=tux.level;
@@ -176,19 +191,34 @@ public class BattleController implements Initializable {
         e=1;
         v=(int) (Math.random()*100)+85;
 
-        damage = 0.01 * b * e * v * ((((0.2*n+1)*a*p)/25*d)+2);
+        double upperOperation = (0.2 * n  + 1) * a * p ;
+        double downOperation = 25 * d;
+
+        damage = 0.1 * b * e * v * ((upperOperation/downOperation)+2);
+
 
         System.out.println("Tux: " + damage);
-        return damage;
+        return (int) damage;
     }
 
-    private void tuxAttack() {
+    private void tuxAttack() throws InterruptedException {
         int prob = (int) (Math.random()*20);
         if (prob < 20) {
-            pkSelected.hp-=damageTux(tux.getAtributes().get(2), tux.getAtributes().get(4));
+//            pkSelected.hp-=damageTux(tux.getAtributes().get(2), tux.getAtributes().get(4));
+
+            double damage = damageTux(tux.getAtributes().get(2), tux.getAtributes().get(4));
+            double initialHealth = pkSelected.getAtributes().get(0);
+
+            pkSelected.atributes.set(0, (int) (initialHealth - damage));
         }else{
-            pkSelected.hp-=damageTux(tux.getAtributes().get(1), tux.getAtributes().get(4));
+//            pkSelected.hp-=damageTux(tux.getAtributes().get(1), tux.getAtributes().get(4));
+            double damage = damageTux(tux.getAtributes().get(1), tux.getAtributes().get(4));
+            double initialHealth = pkSelected.getAtributes().get(0);
+
+            pkSelected.atributes.set(0, (int) (initialHealth - damage));
         }
+
+        Thread.sleep(1000);
     }
 
     private void reloadStats() {
@@ -197,38 +227,43 @@ public class BattleController implements Initializable {
         setTuxStats(tux);
     }
 
-    private void gameplay() {
+    private void gameOperations() throws InterruptedException {
+        if (tux.atributes.get(0)<= 0) {
+            tux = new Tux(1);
+            reloadStats();
+            countTux++;
+        }else if (pkSelected.getAtributes().get(0) <= 0) {
+            File pk = new File("imagenes/pokemon/died.png");
+            imageAttack.setImage(new Image(pk.toURI().toString()));
+
+        }
+        if(pkSelected.getAtributes().get(0) > 0) {
+
+            reloadStats();
+
+            attackButton.setDisable(true);
+            SpecialAttackButton.setDisable(true);
+            tuxAttack();
+            attackButton.setDisable(false);
+            SpecialAttackButton.setDisable(false);
+            reloadStats();
+        }
+    }
+
+    private void gameplay() throws InterruptedException {
         int cont=0;
-        if(pkSelected != null) {
-            while (pkSelected.hp > 0) {
-                if (tux.hp <= 0) {
-                    tux = new Tux(1);
-                    reloadStats();
-                    cont++;
-                    System.out.println(cont);
-                }
-
-                attackButton.setDisable(false);
-                SpecialAttackButton.setDisable(false);
-
-                reloadStats();
-
-                attackButton.setDisable(true);
-                SpecialAttackButton.setDisable(true);
-                tuxAttack();
-
-                reloadStats();
-            }
+        if(pkSelected != null || pkSelected.getAtributes().get(0) > 0) {
+               gameOperations();
         }else {
             int speed = 0;
             int selected = 0;
-            for (int i=0; i< pokemonList.size(); i++){
-                if(pokemonList.get(i).getAtributes().get(3) > speed) {
+            for (int i = 0; i < pokemonList.size(); i++) {
+                if (pokemonList.get(i).getAtributes().get(3) > speed) {
                     speed = pokemonList.get(i).getAtributes().get(3);
                     selected = i;
                 }
             }
-
+            //colocamos el pokemon que más velocidad tiene
             try {
                 File pk = new File("imagenes/pokemon/" + pokemonList.get(selected).getId() + ".png");
                 imageAttack.setImage(new Image(pk.toURI().toString()));
@@ -237,7 +272,6 @@ public class BattleController implements Initializable {
             }
             pkSelected = pokemonList.get(selected);
             System.out.println(pkSelected.name);
-
 
         }
     }
@@ -384,15 +418,8 @@ public class BattleController implements Initializable {
             e.printStackTrace();
         }
 
-//        try{
-//           while (pkSelected == null){
-//               Thread.sleep(300);
-//           }
-           gameplay();
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+//           gameplay();
+
 
 
     }

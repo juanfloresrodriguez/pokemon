@@ -66,5 +66,6 @@
       <Button fx:id="attackButton" layoutX="82.0" layoutY="26.0" mnemonicParsing="false" onAction="#attack" text="Ataque" />
       <Button fx:id="SpecialAttackButton" layoutX="162.0" layoutY="26.0" mnemonicParsing="false" onAction="#specialAttack" text=" Ataque Especial" />
       <Text fx:id="atributtesTux" fill="WHITE" layoutX="686.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" />
+      <Text fx:id="diedTuxCounter" layoutX="384.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" />
    </children>
 </Pane>

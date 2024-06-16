@@ -98,7 +98,7 @@ public class Pokemon {
         Singleton s = Singleton.getInstance();
 
         int improvement;
-        switch(s.getTrainerSelection()){
+        switch(s.getDifficultySelection()){
             case "Recluta":
                 this.level = (int) (Math.random() * 100) + 75;
                 improvement = (int) (Math.random() * 100) + 75;
@@ -141,7 +141,7 @@ public class Pokemon {
         return cadena;
     }
     public String setTuxStats() {
-        String cadena = "Vida: " +  hp + "\r\n" + "Tipo: " + type;
+        String cadena = "Vida: " +  getAtributes().get(0) + "\r\n" + "Tipo: " + type;
 
         return cadena;
     }

@@ -204,6 +204,7 @@ public class MainMenu implements Initializable {
 
         if(s.getDifficultySelection()==null){
             difficultySelection.getSelectionModel().selectFirst();
+            s.setDifficultySelection(difficultySelection.toString());
         }
         //Una vez que tengamos seleccionado un entrenador se cambia al entrenador seleccionado
         changeTrainerImage();
