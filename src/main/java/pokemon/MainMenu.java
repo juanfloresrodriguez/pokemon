@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -117,7 +118,7 @@ public class MainMenu implements Initializable {
             closeWindows.close();
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -145,7 +146,7 @@ public class MainMenu implements Initializable {
 
 
 
-        changeTrainerImage();//Para establecer la imagen del entrenador seleccionado
+//        changeTrainerImage();//Para establecer la imagen del entrenador seleccionado
     }
 
     @FXML
@@ -182,12 +183,12 @@ public class MainMenu implements Initializable {
     }
 
 
-    public void changeTrainerImage(){
-        Singleton s = Singleton.getInstance();
-//        String trainerName = s.getTrainerSelection();
-        File file = new File("imagenes/entrenadores/"+ s.getTrainerSelection() + ".png");
-        trainerImage.setImage(new Image(file.toURI().toString()));
-    }
+//    public void changeTrainerImage(){
+//        Singleton s = Singleton.getInstance();
+////        String trainerName = s.getTrainerSelection();
+//        InputStream is = PokedexController.class.getResourceAsStream("/imagenes/entrenadores/"+ s.getTrainerSelection() + ".png");
+//        trainerImage.setImage(new Image(is));
+//    }
 
         @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -207,7 +208,7 @@ public class MainMenu implements Initializable {
             s.setDifficultySelection(difficultySelection.toString());
         }
         //Una vez que tengamos seleccionado un entrenador se cambia al entrenador seleccionado
-        changeTrainerImage();
+//        changeTrainerImage();
     }
 
 

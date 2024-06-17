@@ -1,15 +1,21 @@
 package pokemon;
 
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -83,6 +89,12 @@ public class BattleController implements Initializable {
     @FXML
     private Text diedTuxCounter;
 
+    @FXML
+    private Button helpButton;
+
+    @FXML
+    private Button returnButton;
+
     List<Pokemon> pokemonList;
 
     ImageView[] pokemonImages;
@@ -107,24 +119,27 @@ public class BattleController implements Initializable {
 
     void setBattleStage(){
         File file, back, tux;
+        InputStream is = PokedexController.class.getResourceAsStream("/imagenes/battle_background.jpg");
+        background.setImage(new Image(is));
 
-        back = new File("imagenes/battle_background.jpg");
-        background.setImage(new Image(back.toURI().toString()));
-
-        tux = new File("imagenes/pokemon/tux.png");
-        imageTux.setImage(new Image(tux.toURI().toString()));
+        is = PokedexController.class.getResourceAsStream("/imagenes/pokemon/tux.png");
+        imageTux.setImage(new Image(is));
 
         for(int i =0; i<pokemonList.size(); i++){
-            file = new File("imagenes/pokemon/" + pokemonList.get(i).getId() + ".png");
-            pokemonImages[i].setImage(new Image(file.toURI().toString()));
+            is = PokedexController.class.getResourceAsStream("/imagenes/pokemon/" + pokemonList.get(i).getId() + ".png");
+            pokemonImages[i].setImage(new Image(is));
+            Node imageNode = (Node) pokemonImages[i];
+            imageNode.getProperties().put("pokemonId", pokemonList.get(i).getId());
         }
 
         int count = 6 - pokemonList.size();
         int numPokemon = pokemonList.size();
         if(count >0) {
             for (int i = 0; i < count; i++) {
-                file = new File("imagenes/pokeball/pokeball.png");
-                pokemonImages[numPokemon+i].setImage(new Image(file.toURI().toString()));
+                is = PokedexController.class.getResourceAsStream("/imagenes/pokeball/pokeball.png");
+                pokemonImages[numPokemon+i].setImage(new Image(is));
+                Node imageNode = (Node) pokemonImages[numPokemon+i];
+                imageNode.getProperties().put("pokemonId", "pokeball");
             }
         }
     }
@@ -250,8 +265,8 @@ public class BattleController implements Initializable {
             reloadStats();
             countTux++;
         }else if (pkSelected.getAtributes().get(0) <= 0) {
-            File pk = new File("imagenes/pokemon/died.png");
-            imageAttack.setImage(new Image(pk.toURI().toString()));
+            InputStream is = PokedexController.class.getResourceAsStream("/imagenes/pokemon/died.png");
+            imageAttack.setImage(new Image(is));
 
         }
         if(pkSelected.getAtributes().get(0) > 0) {
@@ -267,8 +282,46 @@ public class BattleController implements Initializable {
         }
     }
 
+    private boolean checkPokemonAlive() {//devuelve false cuando no quedan pokemons vivos
+        int cont=0;
+        for(int i=0; i<pokemonList.size(); i++) {
+            if(pokemonList.get(i).getAtributes().get(0) >= 0){
+                cont++;
+            }
+        }
+        if(cont!=0){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    public void handleEndGame() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("endGame.fxml"));
+
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Ayuda");
+            stage.setScene(scene);
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            //stage.show();
+            stage.showAndWait();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
     private void gameplay() throws InterruptedException {
         int cont=0;
+        if(checkPokemonAlive() == false) {//si es false
+            handleEndGame();
+        }
+
         if(pkSelected != null || pkSelected.getAtributes().get(0) > 0) {
                gameOperations();
         }else {
@@ -282,8 +335,8 @@ public class BattleController implements Initializable {
             }
             //colocamos el pokemon que más velocidad tiene
             try {
-                File pk = new File("imagenes/pokemon/" + pokemonList.get(selected).getId() + ".png");
-                imageAttack.setImage(new Image(pk.toURI().toString()));
+                InputStream is = PokedexController.class.getResourceAsStream("/imagenes/pokemon/" + pokemonList.get(selected).getId() + ".png");
+                imageAttack.setImage(new Image(is));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -291,8 +344,54 @@ public class BattleController implements Initializable {
             System.out.println(pkSelected.name);
 
         }
+
     }
 
+    @FXML
+    void returnToMainMenu() {
+        //abrimos la ventana principal
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("mainMenu.fxml"));
+            /*
+             * if "fx:controller" is not set in fxml
+             * fxmlLoader.setController(NewWindowController);
+             */
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            Stage stage = new Stage();
+            stage.setTitle("Menú Principal");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        //cerramos la ventana actual a través de algún control de la misma
+        Stage stage = (Stage) returnButton.getScene().getWindow();
+
+        stage.close();
+    }
+
+    @FXML
+    void openHelpWindow() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("helpWindows.fxml"));
+
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Ayuda");
+            stage.setScene(scene);
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            //stage.show();
+            stage.showAndWait();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 
     @FXML
     void onDragDetected(MouseEvent event) {
@@ -300,12 +399,9 @@ public class BattleController implements Initializable {
 //        System.out.println("onDragDetected");
         /* allow any transfer mode */
         Node source = (Node) event.getSource();
-        ImageView imagenArrastrada = (ImageView) source;
-        String imageUrl = imagenArrastrada.getImage().getUrl();
-        String nombreImagen = imageUrl.substring(imageUrl.lastIndexOf('/') + 1);
-        System.out.println(imageUrl);
-        System.out.println(nombreImagen);
-        if(nombreImagen.equals( "pokeball.png")){
+//        ImageView imagenArrastrada = (ImageView) source;
+        String idPokemon = source.getProperties().get("pokemonId").toString();
+        if(idPokemon.equals( "pokeball")){
             return;
         }
 
@@ -314,7 +410,7 @@ public class BattleController implements Initializable {
         ClipboardContent content = new ClipboardContent();
         pokemonSelected = (ImageView) event.getSource();
         content.putImage(pokemonSelected.getImage());
-        content.putString(nombreImagen.split("\\.")[0]);
+        content.putString(idPokemon);
         db.setContent(content);
         event.consume();
     }
@@ -435,6 +531,7 @@ public class BattleController implements Initializable {
             e.printStackTrace();
         }
 
+        //Cuando no tengamos ningún pokemon seleccionado nos elegirá el más veloz
         if(pkSelected == null) {
             int speed = 0;
             int selected = 0;
@@ -446,8 +543,8 @@ public class BattleController implements Initializable {
             }
             //colocamos el pokemon que más velocidad tiene
             try {
-                File pk = new File("imagenes/pokemon/" + pokemonList.get(selected).getId() + ".png");
-                imageAttack.setImage(new Image(pk.toURI().toString()));
+                InputStream is = PokedexController.class.getResourceAsStream("/imagenes/pokemon/" + pokemonList.get(selected).getId() + ".png");
+                imageAttack.setImage(new Image(is));
             } catch (Exception e) {
                 e.printStackTrace();
             }

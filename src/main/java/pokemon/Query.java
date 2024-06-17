@@ -138,7 +138,7 @@ public class Query {
             String databaseUrl = s.getDatabaseUrl();
             Connection connection = DriverManager.getConnection(databaseUrl, s.getDatabaseUser(), s.getDatabasePassword());
 
-            String query = "SELECT ID_Pokemon FROM Pokemon WHERE Pokemon = '" + pokemonName +"'";
+            String query = "SELECT ID_Pokemon FROM Pokemon WHERE Pokemon = \"" + pokemonName + "\";";
             PreparedStatement statement = connection.prepareStatement(query);
 
             ResultSet pokemon = statement.executeQuery();

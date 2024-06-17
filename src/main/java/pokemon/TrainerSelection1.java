@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -58,8 +59,8 @@ public class TrainerSelection1 implements Initializable {
     void setTrainerImage(){
 //Convierte el nombre seleccionado del comboBox lo convierte a un string y llama a la foto que se llama así
         String name = trainerName.getValue();
-        File file = new File("imagenes/entrenadores/" + name + ".png");
-        trainer.setImage(new Image(file.toURI().toString()));
+        InputStream is = PokedexController.class.getResourceAsStream("/imagenes/entrenadores/" + name + ".png");
+        trainer.setImage(new Image(is));
 
         s.setTrainerSelection(name);
         setPokemonTrainer();
@@ -75,147 +76,20 @@ public class TrainerSelection1 implements Initializable {
             this.pokemonList.add(new Pokemon(pokemonId.get(i)));
         }
 
-        File file;
-
         for(int i =0; i<pokemonList.size(); i++){
-            file = new File("imagenes/pokemon/" + pokemonList.get(i).getId() + ".png");
-            pokemonImages[i].setImage(new Image(file.toURI().toString()));
+            InputStream is = PokedexController.class.getResourceAsStream("/imagenes/pokemon/" + pokemonList.get(i).getId() + ".png");
+            pokemonImages[i].setImage(new Image(is));
         }
 
         int count = 6 - pokemonList.size();
         int numPokemon = pokemonList.size();
         if(count >0) {
             for (int i = 0; i < count; i++) {
-                file = new File("imagenes/pokeball/pokeball.png");
-                pokemonImages[numPokemon+i].setImage(new Image(file.toURI().toString()));
+                InputStream is = PokedexController.class.getResourceAsStream("/imagenes/pokeball/pokeball.png");
+                pokemonImages[numPokemon+i].setImage(new Image(is));
             }
         }
 
-
-//        switch(pokemonId.size()) {
-//            case 1: //Un solo pokemon
-//                file = new File("imagenes/pokemon/" + pokemonId.get(0) + ".png");
-//                pokemon1.setImage(new Image(file.toURI().toString()));
-//                //POKEBALLS
-//                file1 = new File("imagenes/pokemon/pokeball.png");
-//                pokemon2.setImage(new Image(file1.toURI().toString()));
-//
-//                file2 = new File("imagenes/pokemon/pokeball.png");
-//                pokemon3.setImage(new Image(file2.toURI().toString()));
-//
-//                file3 = new File("imagenes/pokemon/pokeball.png");
-//                pokemon4.setImage(new Image(file3.toURI().toString()));
-//
-//                file4 = new File("imagenes/pokemon/pokeball.png");
-//                pokemon5.setImage(new Image(file4.toURI().toString()));
-//
-//                file5 = new File("imagenes/pokemon/pokeball.png");
-//                pokemon6.setImage(new Image(file5.toURI().toString()));
-//                break;
-//            case 2:
-//                file = new File("imagenes/pokemon/" + pokemonId.get(0) + ".png");
-//                pokemon1.setImage(new Image(file.toURI().toString()));
-//
-//                file1 = new File("imagenes/pokemon/" + pokemonId.get(1) + ".png");
-//                pokemon2.setImage(new Image(file1.toURI().toString()));
-//
-//                //POKEBALLS
-//                file2 = new File("imagenes/pokemon/pokeball.png");
-//                pokemon3.setImage(new Image(file2.toURI().toString()));
-//
-//                file3 = new File("imagenes/pokemon/pokeball.png");
-//                pokemon4.setImage(new Image(file3.toURI().toString()));
-//
-//                file4 = new File("imagenes/pokemon/pokeball.png");
-//                pokemon5.setImage(new Image(file4.toURI().toString()));
-//
-//                file5 = new File("imagenes/pokemon/pokeball.png");
-//                pokemon6.setImage(new Image(file5.toURI().toString()));
-//
-//                break;
-//            case 3:
-//                file = new File("imagenes/pokemon/" + pokemonId.get(0) + ".png");
-//                pokemon1.setImage(new Image(file.toURI().toString()));
-//
-//                file1 = new File("imagenes/pokemon/" + pokemonId.get(1) + ".png");
-//                pokemon2.setImage(new Image(file1.toURI().toString()));
-//
-//                file2 = new File("imagenes/pokemon/" + pokemonId.get(2) + ".png");
-//                pokemon3.setImage(new Image(file2.toURI().toString()));
-//
-//                //POKEBALLS
-//                file3 = new File("imagenes/pokemon/pokeball.png");
-//                pokemon4.setImage(new Image(file3.toURI().toString()));
-//
-//                file4 = new File("imagenes/pokemon/pokeball.png");
-//                pokemon5.setImage(new Image(file4.toURI().toString()));
-//
-//                file5 = new File("imagenes/pokemon/pokeball.png");
-//                pokemon6.setImage(new Image(file5.toURI().toString()));
-//
-//                break;
-//            case 4:
-//                file = new File("imagenes/pokemon/" + pokemonId.get(0) + ".png");
-//                pokemon1.setImage(new Image(file.toURI().toString()));
-//
-//                file1 = new File("imagenes/pokemon/" + pokemonId.get(1) + ".png");
-//                pokemon2.setImage(new Image(file1.toURI().toString()));
-//
-//                file2 = new File("imagenes/pokemon/" + pokemonId.get(2) + ".png");
-//                pokemon3.setImage(new Image(file2.toURI().toString()));
-//
-//                file3 = new File("imagenes/pokemon/" + pokemonId.get(3) + ".png");
-//                pokemon4.setImage(new Image(file3.toURI().toString()));
-//
-//                //POKEBALLS
-//                file4 = new File("imagenes/pokemon/pokeball.png");
-//                pokemon5.setImage(new Image(file4.toURI().toString()));
-//
-//                file5 = new File("imagenes/pokemon/pokeball.png");
-//                pokemon6.setImage(new Image(file5.toURI().toString()));
-//
-//                break;
-//            case 5:
-//                file = new File("imagenes/pokemon/" + pokemonId.get(0) + ".png");
-//                pokemon1.setImage(new Image(file.toURI().toString()));
-//
-//                file1 = new File("imagenes/pokemon/" + pokemonId.get(1) + ".png");
-//                pokemon2.setImage(new Image(file1.toURI().toString()));
-//
-//                file2 = new File("imagenes/pokemon/" + pokemonId.get(2) + ".png");
-//                pokemon3.setImage(new Image(file2.toURI().toString()));
-//
-//                file3 = new File("imagenes/pokemon/" + pokemonId.get(3) + ".png");
-//                pokemon4.setImage(new Image(file3.toURI().toString()));
-//
-//                file4 = new File("imagenes/pokemon/" + pokemonId.get(4) + ".png");
-//                pokemon5.setImage(new Image(file4.toURI().toString()));
-//
-//                //POKEBALLS
-//                file5 = new File("imagenes/pokemon/pokeball.png");
-//                pokemon6.setImage(new Image(file5.toURI().toString()));
-//
-//                break;
-//            case 6:
-//                file = new File("imagenes/pokemon/" + pokemonId.get(0) + ".png");
-//                pokemon1.setImage(new Image(file.toURI().toString()));
-//
-//                file1 = new File("imagenes/pokemon/" + pokemonId.get(1) + ".png");
-//                pokemon2.setImage(new Image(file1.toURI().toString()));
-//
-//                file2 = new File("imagenes/pokemon/" + pokemonId.get(2) + ".png");
-//                pokemon3.setImage(new Image(file2.toURI().toString()));
-//
-//                file3 = new File("imagenes/pokemon/" + pokemonId.get(3) + ".png");
-//                pokemon4.setImage(new Image(file3.toURI().toString()));
-//
-//                file4 = new File("imagenes/pokemon/" + pokemonId.get(4) + ".png");
-//                pokemon5.setImage(new Image(file4.toURI().toString()));
-//
-//                file5 = new File("imagenes/pokemon/" + pokemonId.get(5) + ".png");
-//                pokemon6.setImage(new Image(file5.toURI().toString()));
-//                break;
-//        }
         //Establecemos los pokemon del entrenador en el Singleton
         s.setPokemonId(pokemonId);
     }

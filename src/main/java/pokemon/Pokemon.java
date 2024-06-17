@@ -99,34 +99,33 @@ public class Pokemon {
 
         int improvement;
         switch(s.getDifficultySelection()){
-            case "Recluta":
-                this.level = (int) (Math.random() * 100) + 75;
-                improvement = (int) (Math.random() * 100) + 75;
-                for (int i = 0; i < atributes.size(); i++) {
-                    atributes.set(i, atributes.get(i) * improvement);
-                }
-                break;
             case "Marine":
                 this.level = (int) (Math.random() * 75) + 50;
                 improvement = (int) (Math.random() * 75) + 50;
                 for (int i = 0; i < atributes.size(); i++) {
-                    atributes.set(i, atributes.get(i) * improvement);
+                    atributes.set(i, atributes.get(i) + improvement);
                 }
                 break;
             case "Veterano":
                 this.level = (int) (Math.random() * 50) + 25;
-                improvement = (int) (Math.random() * 50) + 50;
+                improvement = (int) (Math.random() * 50) + 25;
                 for (int i = 0; i < atributes.size(); i++) {
-                    atributes.set(i, atributes.get(i) * improvement);
+                    atributes.set(i, atributes.get(i) + (improvement));
                 }
                 break;
             case "Pesadilla":
                 this.level = (int) (Math.random() * 25) + 1;
                 improvement = (int) (Math.random() * 25) + 1;
                 for (int i = 0; i < atributes.size(); i++) {
-                    atributes.set(i, atributes.get(i) * improvement);
+                    atributes.set(i, atributes.get(i) + improvement);
                 }
                 break;
+            default: //RECLUTA
+                this.level = (int) (Math.random() * 100) + 75;
+                improvement = (int) (Math.random() * 100) + 75;
+                for (int i = 0; i < atributes.size(); i++) {
+                    atributes.set(i, atributes.get(i) + improvement);
+                }
         }
     }
 

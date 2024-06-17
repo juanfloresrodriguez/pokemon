@@ -27,6 +27,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,10 +49,11 @@ public class PokedexController implements Initializable {
     private Button returnButton;
 
     @FXML
-    void setPokemonImage() {
+    void setPokemonImage(){
         int idPokemon = Query.pokemonId(pokemonNames.getValue());
-        File file = new File("imagenes/pokemon/" + idPokemon  + ".png");
-        pokemon.setImage(new Image(file.toURI().toString()));
+
+        InputStream is = PokedexController.class.getResourceAsStream("/imagenes/pokemon/"+idPokemon+".png");
+        pokemon.setImage(new Image(is));
         getAtributes();
     }
 
