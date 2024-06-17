@@ -48,5 +48,11 @@
             <Image url="@../imagenes/pokemon/14.png" />
          </image>
       </ImageView>
+      <Text fx:id="pk" layoutX="263.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text fx:id="pk1" layoutX="403.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text fx:id="pk2" layoutX="529.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text fx:id="pk3" layoutX="274.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text fx:id="pk4" layoutX="403.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text fx:id="pk5" layoutX="529.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" />
    </children>
 </Pane>

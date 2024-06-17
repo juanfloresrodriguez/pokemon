@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -52,8 +53,27 @@ public class TrainerSelection1 implements Initializable {
     @FXML
     private ImageView pokemon6;
 
+    @FXML
+    private Text pk;
+
+    @FXML
+    private Text pk1;
+
+    @FXML
+    private Text pk2;
+
+    @FXML
+    private Text pk3;
+
+    @FXML
+    private Text pk4;
+
+    @FXML
+    private Text pk5;
+
     ImageView[] pokemonImages;
     List<Pokemon> pokemonList;
+    Text[] pokemonNames;
 
     @FXML
     void setTrainerImage(){
@@ -64,6 +84,19 @@ public class TrainerSelection1 implements Initializable {
 
         s.setTrainerSelection(name);
         setPokemonTrainer();
+    }
+
+    private void getPokemonName() {
+        pokemonNames = new Text[]{pk, pk1, pk2, pk3, pk4, pk5};
+//        Establece un texto vacio para en el caso en el que cambiemos de entrenador no aparezca en la pokeball
+        for(int i=0; i<6;i++){
+            pokemonNames[i].setText("");
+        }
+
+        //Establece el texto conforme la cantidad de pokemon que tenga el entrenador
+        for(int j=0; j<this.pokemonList.size(); j++){
+            pokemonNames[j].setText(this.pokemonList.get(j).getName());
+        }
     }
 
     @FXML
@@ -91,6 +124,7 @@ public class TrainerSelection1 implements Initializable {
             }
         }
 
+        getPokemonName();
         //Establecemos los pokemon del entrenador en el Singleton
         s.setPokemonId(pokemonId);
     }
