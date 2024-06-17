@@ -50,6 +50,7 @@ public class PokedexController implements Initializable {
 
     @FXML
     void setPokemonImage(){
+//        Establece las imagenes de los pokemons
         int idPokemon = Query.pokemonId(pokemonNames.getValue());
 
         InputStream is = PokedexController.class.getResourceAsStream("/imagenes/pokemon/"+idPokemon+".png");
@@ -58,6 +59,7 @@ public class PokedexController implements Initializable {
     }
 
     void getAtributes(){
+//        Muestra los atributos de los pokemons
         List<Integer> atributes = new ArrayList<>();
         atributes.addAll(Query.pokemonAtributes(Query.pokemonId(pokemonNames.getValue())));
 

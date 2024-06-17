@@ -68,6 +68,7 @@ public class TrainerSelection1 implements Initializable {
 
     @FXML
     void setPokemonTrainer(){
+//        Establece los pokemons que van asociados a un entrenador
         List<Integer> pokemonId = new ArrayList<>();
         pokemonId.addAll(Query.trainerPokemon());
 

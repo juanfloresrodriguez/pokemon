@@ -113,12 +113,13 @@ public class BattleController implements Initializable {
 
     public void setLogMessage(String status)
     {
+//        Establece lo que esta ocurriendo en la partida en el cuadro de texto inferior
 
         logMessage = logMessage + " \n" + status;
     }
 
     void setBattleStage(){
-        File file, back, tux;
+//        Establecemos el tablero de la partida con las fotos de tux, el fondo y la de los pokemon del entrenador
         InputStream is = PokedexController.class.getResourceAsStream("/imagenes/battle_background.jpg");
         background.setImage(new Image(is));
 
@@ -145,23 +146,28 @@ public class BattleController implements Initializable {
     }
 
     private void setStats(){
+        //Carga los atributos de los pokemon del objeto Pokemon del mismo
         for(int i=0; i<this.pokemonList.size(); i++){
             pokemonAtributtes[i].setText(pokemonList.get(i).getPokemonAtributes());
         }
     }
 
     private void setTuxStats(Pokemon tux){
+//        Carga los atributos del tux del objeto Pokemon Tux
         double progress = (double) tux.getAtributes().get(0) / tux.maxHp;
         hpTux.setProgress(progress);
     }
 
     private void setTuxText() {
+//        Establece el contador de tux muertos
         atributtesTux.setText(tux.setTuxStats());
         diedTuxCounter.setText("Tux muertos: " + countTux);
     }
 
     @FXML
     void attack() throws InterruptedException {
+        //realiza el ataque especial con los datos sacados del objeto Pokemon, aplica la formula anterior
+        //con los atributos correspondientes.
         double damage = damage(pkSelected.getAtributes().get(1), pkSelected.getAtributes().get(4));
         double initialHealth = tux.getAtributes().get(0);
 
@@ -175,6 +181,9 @@ public class BattleController implements Initializable {
 
     @FXML
     void specialAttack() throws InterruptedException {
+        //Realiza el ataque especial con los datos sacados del objeto Pokemon, aplica la formula anterior
+        //con los atributos correspondientes. Una vez realizado ataca tux, ya que el jugador pierde un turno
+        //y tux ataca dos veces seguidas.
         double damage = damage(pkSelected.getAtributes().get(2), pkSelected.getAtributes().get(4));
         double initialHealth = tux.getAtributes().get(0);
 
@@ -183,16 +192,22 @@ public class BattleController implements Initializable {
         setLogMessage(pkSelected.getName() + " ha realizado un Ataque especial a Tux realizando " + (int) damage + " daño.");
         log.setText(logMessage);
 
+        tuxAttack();
+        reloadStats();
+
         gameplay();
     }
 
     private double typeMultiplier() {
+        //mediante el enumerado Type seleccionmos de la tabla de efectividad del singleton
+        //la correspondiente dependiendo del tipo del atancante y el defensor
         Singleton s = Singleton.getInstance();
         
         return s.effectivenessChart[pkSelected.getType()][tux.getType()];
     }
 
     private int damage(int power, int defense){
+        //Se realiza la formula para el calculo de daño para el ataque del pokemon
         double b, e, v, n, a, p, d;
         double damage;
         n=pkSelected.level;
@@ -212,6 +227,7 @@ public class BattleController implements Initializable {
     }
 
     private int damageTux(int power, int defense){
+        //Se realiza la formula para el calculo de daño para el ataque de tux
         double b, e, v, n, a, p, d;
         double damage;
         n=tux.level;
@@ -234,6 +250,11 @@ public class BattleController implements Initializable {
     }
 
     private void tuxAttack() throws InterruptedException {
+//      se calcula la probabilidad de que el ataque de tux sea especial y se aplica la fórmula correspondiente.
+
+        //Esperamos 1 seg antes del ataque
+        Thread.sleep(1000);
+
         int prob = (int) (Math.random()*20);
         if (prob < 20) {
 //            pkSelected.hp-=damageTux(tux.getAtributes().get(2), tux.getAtributes().get(4));
@@ -250,29 +271,29 @@ public class BattleController implements Initializable {
             pkSelected.atributes.set(0, (int) (initialHealth - damage));
         }
 
-        Thread.sleep(1000);
     }
 
     private void reloadStats() {
+        //Recargamos las estadisticas de los pokemon y tux que están jugando
         setStats();
         setTuxText();
         setTuxStats(tux);
     }
 
     private void gameOperations() throws InterruptedException {
+        //Si la vida de tux es menor o igual a cero se genera un tux nuevo
         if (tux.atributes.get(0)<= 0) {
             tux = new Tux(1);
             reloadStats();
             countTux++;
-        }else if (pkSelected.getAtributes().get(0) <= 0) {
+        }else if (pkSelected.getAtributes().get(0) <= 0) {//Si el pokemon ha muerto se le colocará una foto de una tumba
             InputStream is = PokedexController.class.getResourceAsStream("/imagenes/pokemon/died.png");
             imageAttack.setImage(new Image(is));
-
         }
-        if(pkSelected.getAtributes().get(0) > 0) {
+        if(pkSelected.getAtributes().get(0) > 0) { //Si el pokemon tiene vida se realizaran los ataques pertinentes
 
             reloadStats();
-
+//          Deshabilitamos los botones mientras tux ataca
             attackButton.setDisable(true);
             SpecialAttackButton.setDisable(true);
             tuxAttack();
@@ -285,11 +306,11 @@ public class BattleController implements Initializable {
     private boolean checkPokemonAlive() {//devuelve false cuando no quedan pokemons vivos
         int cont=0;
         for(int i=0; i<pokemonList.size(); i++) {
-            if(pokemonList.get(i).getAtributes().get(0) >= 0){
+            if(pokemonList.get(i).getAtributes().get(0) <= 0){
                 cont++;
             }
         }
-        if(cont!=0){
+        if(cont == pokemonList.size()){
             return false;
         }else {
             return true;
@@ -297,6 +318,8 @@ public class BattleController implements Initializable {
     }
 
     public void handleEndGame() {
+        // Una vez nos hemos quedado sin vida nos abre una ventana la cual muestra una imagen y contiene un botón para
+//        salir
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("endGame.fxml"));
@@ -342,9 +365,7 @@ public class BattleController implements Initializable {
             }
             pkSelected = pokemonList.get(selected);
             System.out.println(pkSelected.name);
-
         }
-
     }
 
     @FXML
@@ -551,6 +572,18 @@ public class BattleController implements Initializable {
             pkSelected = pokemonList.get(selected);
             setLogMessage("Se ha elegido el pokemon con mayor velocidad para comenzar la partida: " + pkSelected.getName());
             log.setText(logMessage);
+
+            if(tux.atributes.get(3) > pkSelected.getAtributes().get(3)){
+            //Si la velocidad de tux es mayor que la de el pokemon que hemos seleccionado por ser el más rapido atacará
+                try {
+                    tuxAttack();
+                    reloadStats();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+
+
+            }
         }
     }
 }

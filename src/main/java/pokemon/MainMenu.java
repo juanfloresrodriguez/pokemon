@@ -52,11 +52,13 @@ public class MainMenu implements Initializable {
 
     @FXML
     void exitProgram() {
+        //sale del programa
         System.exit(0);
     }
 
     @FXML
     void openGame() {
+        //Abre la partida
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("battle.fxml"));
@@ -80,6 +82,7 @@ public class MainMenu implements Initializable {
 
     @FXML
     void openHelpWindow() {
+        //Abre el menú de ayuda
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("helpWindows.fxml"));
@@ -101,6 +104,7 @@ public class MainMenu implements Initializable {
 
     @FXML
     void openPokedexWindow() {
+        //Abre la pokedex
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("pokedex.fxml"));
@@ -124,6 +128,7 @@ public class MainMenu implements Initializable {
 
     @FXML
     void openTrainerWindows() {
+        //Abre la ventana de entrenadores
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("trainerSelection1.fxml"));
@@ -151,6 +156,7 @@ public class MainMenu implements Initializable {
 
     @FXML
     void returnToDatabase() {
+        //vuelve al menu de la base de dato
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("connectionDB.fxml"));
@@ -178,28 +184,21 @@ public class MainMenu implements Initializable {
 
     @FXML
     public void selectDifficulty() {
+        //guarda la dificultad seleccionda en el comboBox en el Singleron
         Singleton s = Singleton.getInstance();
         s.setDifficultySelection(difficultySelection.getSelectionModel().getSelectedItem().toString());
     }
 
 
-//    public void changeTrainerImage(){
-//        Singleton s = Singleton.getInstance();
-////        String trainerName = s.getTrainerSelection();
-//        InputStream is = PokedexController.class.getResourceAsStream("/imagenes/entrenadores/"+ s.getTrainerSelection() + ".png");
-//        trainerImage.setImage(new Image(is));
-//    }
-
         @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Singleton s = Singleton.getInstance();
-
+//Guardamos en el comboBox la dificultad elegida por el jugador
         List<String> difficulty = new ArrayList<>();
         difficulty.add("Recluta");
         difficulty.add("Marine");
         difficulty.add("Veterano");
         difficulty.add("Pesadilla");
-//        difficultySelection = new ComboBox<>(FXCollections.observableArrayList(difficulty));
 
         difficultySelection.setItems(FXCollections.observableArrayList(difficulty));
 
@@ -207,8 +206,7 @@ public class MainMenu implements Initializable {
             difficultySelection.getSelectionModel().selectFirst();
             s.setDifficultySelection(difficultySelection.toString());
         }
-        //Una vez que tengamos seleccionado un entrenador se cambia al entrenador seleccionado
-//        changeTrainerImage();
+
     }
 
 

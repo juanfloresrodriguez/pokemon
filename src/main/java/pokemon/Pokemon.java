@@ -22,6 +22,7 @@ public class Pokemon {
       4  Defense
    */
     public Pokemon(int id) {
+        //Mediante la id que le pasamos realiza las consultas pertinentes
        Singleton s = Singleton.getInstance();
             this.id = id;
             this.name = Query.pokemonName(id);
@@ -95,6 +96,7 @@ public class Pokemon {
     }
 
     private void changeAtributes() {
+//        Edita los atributos de los pokemon segun la dificultad seleccionada
         Singleton s = Singleton.getInstance();
 
         int improvement;
@@ -103,33 +105,34 @@ public class Pokemon {
                 this.level = (int) (Math.random() * 75) + 50;
                 improvement = (int) (Math.random() * 75) + 50;
                 for (int i = 0; i < atributes.size(); i++) {
-                    atributes.set(i, atributes.get(i) + improvement);
+                    atributes.set(i, (atributes.get(i) + improvement));
                 }
                 break;
             case "Veterano":
                 this.level = (int) (Math.random() * 50) + 25;
                 improvement = (int) (Math.random() * 50) + 25;
                 for (int i = 0; i < atributes.size(); i++) {
-                    atributes.set(i, atributes.get(i) + (improvement));
+                    atributes.set(i, (atributes.get(i) + improvement));
                 }
                 break;
             case "Pesadilla":
                 this.level = (int) (Math.random() * 25) + 1;
                 improvement = (int) (Math.random() * 25) + 1;
                 for (int i = 0; i < atributes.size(); i++) {
-                    atributes.set(i, atributes.get(i) + improvement);
+                    atributes.set(i, (atributes.get(i) + improvement));
                 }
                 break;
             default: //RECLUTA
                 this.level = (int) (Math.random() * 100) + 75;
                 improvement = (int) (Math.random() * 100) + 75;
                 for (int i = 0; i < atributes.size(); i++) {
-                    atributes.set(i, atributes.get(i) + improvement);
+                    atributes.set(i, (atributes.get(i) + improvement));
                 }
         }
     }
 
     public String getPokemonAtributes(){
+        //Devuelve un String con los atributos de los pokemon
         int HP = atributes.get(0);
         int ATT = atributes.get(1);
         int SATT = atributes.get(2);
@@ -140,6 +143,7 @@ public class Pokemon {
         return cadena;
     }
     public String setTuxStats() {
+//        Devuelve la vida y el tipo del tux
         String cadena = "Vida: " +  getAtributes().get(0) + "\r\n" + "Tipo: " + type;
 
         return cadena;

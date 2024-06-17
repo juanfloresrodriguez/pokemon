@@ -21,6 +21,7 @@ public class Tux extends Pokemon {
         Defense
    */
     private void changeAtributes() {
+        //        Edita los atributos de tux según la dificultad seleccionada
         Singleton s = Singleton.getInstance();
         switch(s.getDifficultySelection()){
             case "Marine":

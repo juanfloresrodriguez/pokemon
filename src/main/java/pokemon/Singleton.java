@@ -148,6 +148,7 @@ public class Singleton {
     }
 //    Map<Integer, List<String>>
     public void getTrainerPokemonMap() {
+        //Genera un mapa con los pokemons asociados a los entrenadores
         for(int i=0; i < pokemonId.size(); i++){
             this.trainerPokemon.put(pokemonId.get(i), Query.pokemonAtributes(pokemonId.get(i)));
         }

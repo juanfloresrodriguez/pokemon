@@ -1,6 +1,8 @@
 package pokemon;
 
 public enum Type {
+//    Usamos un tipo enumerado para almacenar el tipo del pokemon con su posición relativa a la tabla de efectividad
+//    Almacenada en el Singleton. Se usa enumerado, ya que no van a recibir cambios.
     NORMAL(1,0), FIRE(2,1), WATER(3, 2),
     GRASS(4, 3), ELECTRIC(5, 4), ICE(6, 5), FIGHTING(7,6),
     POISON(8,7), GROUND(9, 8), FLYING(10,9), PSYCHIC(11,10),
@@ -23,6 +25,4 @@ public enum Type {
     public int getId() {
         return id;
     }
-
-
 }
