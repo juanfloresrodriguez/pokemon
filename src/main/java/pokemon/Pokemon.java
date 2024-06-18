@@ -27,7 +27,6 @@ public class Pokemon {
             this.id = id;
             this.name = Query.pokemonName(id);
             this.type = tipos[Query.pokemonType(id)-1];
-            System.out.println(this.type);
             this.trainer = s.getTrainerSelection();
             this.atributes = Query.pokemonAtributes(id);
 

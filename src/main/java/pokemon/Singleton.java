@@ -153,7 +153,6 @@ public class Singleton {
             this.trainerPokemon.put(pokemonId.get(i), Query.pokemonAtributes(pokemonId.get(i)));
         }
 
-        System.out.println(trainerPokemon);
 
 //        return trainerPokemon;
     }

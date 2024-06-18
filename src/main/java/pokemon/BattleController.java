@@ -252,8 +252,8 @@ public class BattleController implements Initializable {
     private void tuxAttack() throws InterruptedException {
 //      se calcula la probabilidad de que el ataque de tux sea especial y se aplica la fórmula correspondiente.
 
-        //Esperamos 1 seg antes del ataque
-        Thread.sleep(1000);
+        //Esperamos 0.5 seg antes del ataque
+        Thread.sleep(500);
 
         int prob = (int) (Math.random()*20);
         if (prob < 20) {
@@ -364,7 +364,6 @@ public class BattleController implements Initializable {
                 e.printStackTrace();
             }
             pkSelected = pokemonList.get(selected);
-            System.out.println(pkSelected.name);
         }
     }
 
@@ -397,7 +396,7 @@ public class BattleController implements Initializable {
     void openHelpWindow() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("helpWindows.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("battleHelpWindows.fxml"));
 
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();

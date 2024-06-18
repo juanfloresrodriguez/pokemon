@@ -99,7 +99,6 @@ public class Query {
                     pokemon.add(pokemonName.getString(1));
                 num++;
             }
-            System.out.println(pokemon);
             connection.close();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -174,7 +173,6 @@ public class Query {
             atributes.add(pokemon.getInt("Defense"));
 
             connection.close();
-            System.out.println(atributes);
             return atributes;
 
         } catch (Exception ex) {

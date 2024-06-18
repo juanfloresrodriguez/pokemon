@@ -102,7 +102,6 @@ public class PokedexController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println(Query.allPokemonName().size());
         pokemonNames.setItems(FXCollections.observableArrayList(Query.allPokemonName()));
 
         pokemonNames.getSelectionModel().selectFirst();
