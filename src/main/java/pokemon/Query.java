@@ -90,13 +90,13 @@ public class Query {
 
             int num=1;
 
-            for(int i =0; i<151;i++) {
+
                 String query = "SELECT Pokemon FROM Pokemon " + "WHERE ID_Pokemon =" + num;
                 PreparedStatement statement = connection.prepareStatement(query);
 
                 ResultSet pokemonName = statement.executeQuery();
-                    pokemonName.next();
-                    pokemon.add(pokemonName.getString(1));
+            while(pokemonName.next()) {
+                pokemon.add(pokemonName.getString(1));
                 num++;
             }
             connection.close();
@@ -105,6 +105,30 @@ public class Query {
         }
         return pokemon;
     }
+
+    public static List<String> allPokemonNameHpSorted(){
+        Singleton s = Singleton.getInstance();
+        List<String> pokemon = new ArrayList<>();
+
+        try {
+            String databaseUrl = s.getDatabaseUrl();
+            Connection connection = DriverManager.getConnection(databaseUrl, s.getDatabaseUser(), s.getDatabasePassword());
+
+
+                String query = "SELECT Pokemon FROM Pokemon ORDER BY HP DESC";
+                PreparedStatement statement = connection.prepareStatement(query);
+
+                ResultSet pokemonName = statement.executeQuery();
+            while(pokemonName.next()) {
+                pokemon.add(pokemonName.getString("Pokemon"));
+            }
+            connection.close();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return pokemon;
+    }
+
 
     public static String pokemonName(int id) {
         Singleton s = Singleton.getInstance();

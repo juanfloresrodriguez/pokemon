@@ -18,5 +18,7 @@
       <ImageView fx:id="pokemon" fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
       <Text fx:id="pokemonAtributes" layoutX="200.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
       <Button fx:id="returnButton" layoutX="221.0" layoutY="472.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefHeight="64.0" prefWidth="158.0" text="Volver" />
+      <Button fx:id="alphabeticalSort" layoutX="460.0" layoutY="132.0" mnemonicParsing="false" onAction="#alphabeliticalPokedexSort" text="Orden Alfabético" />
+      <Button fx:id="hpSort" layoutX="460.0" layoutY="188.0" mnemonicParsing="false" onAction="#hpPokedexSort" prefHeight="25.0" prefWidth="106.0" text="Orden por Vida" />
    </children>
 </Pane>

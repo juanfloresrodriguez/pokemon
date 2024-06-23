@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.collections.FXCollections;
@@ -30,9 +31,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class PokedexController implements Initializable {
 
@@ -47,6 +46,34 @@ public class PokedexController implements Initializable {
 
     @FXML
     private Button returnButton;
+
+    @FXML
+    private Button alphabeticalSort;
+
+    @FXML
+    private Button hpSort;
+
+//    List<String> names = new ArrayList<>();
+ObservableList<String> pokemonNamesList = FXCollections.observableArrayList();
+ObservableList<String> pokemonNamesListHpSort = FXCollections.observableArrayList();
+
+    @FXML
+    void alphabeliticalPokedexSort() {
+//        pokemonNames.setItems(FXCollections.observableArrayList(Query.allPokemonName()).sorted());
+
+       pokemonNamesList.addAll(Query.allPokemonName());
+       Collections.sort(pokemonNamesList);
+       pokemonNames.getItems().addAll(pokemonNamesList);
+       pokemonNames.getSelectionModel().selectFirst();
+    }
+
+    @FXML
+    void hpPokedexSort() {
+        pokemonNamesListHpSort.addAll(Query.allPokemonNameHpSorted());
+//        Collections.sort(pokemonNamesListHpSort, new Comparador());
+        pokemonNames.setItems(pokemonNamesListHpSort);
+        pokemonNames.getSelectionModel().selectFirst();
+    }
 
     @FXML
     void setPokemonImage(){
@@ -103,7 +130,6 @@ public class PokedexController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         pokemonNames.setItems(FXCollections.observableArrayList(Query.allPokemonName()));
-
         pokemonNames.getSelectionModel().selectFirst();
 
 
